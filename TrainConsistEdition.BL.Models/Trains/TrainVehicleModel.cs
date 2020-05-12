@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace TrainConsistEdition.BL.Models.Trains
 {
-    public class TrainVehicle
+    [Serializable]
+    public class TrainVehicleModel
     {
         public string Module { get; set; }
         public string ModuleConfig { get; set; }

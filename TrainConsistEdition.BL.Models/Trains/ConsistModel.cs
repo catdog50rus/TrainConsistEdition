@@ -7,6 +7,9 @@ using System.Xml.Serialization;
 
 namespace TrainConsistEdition.BL.Models.Trains
 {
+    /// <summary>
+    /// Класс модели итогового состава. Содержит описание состава и список единиц локомотивов/вагонов
+    /// </summary>
     [XmlRoot("Config")]
     public class ConsistModel
     {
@@ -18,7 +21,7 @@ namespace TrainConsistEdition.BL.Models.Trains
 
 
         /// <summary>
-        /// Массив с элементами поезда (Локомотив + вагоны)
+        /// Список с элементами поезда (Локомотив + вагоны)
         /// </summary>
         [XmlElement]
         public List<TrainVehicleModel> Vehicle { get; set; }

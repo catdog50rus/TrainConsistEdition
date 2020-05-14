@@ -25,15 +25,11 @@ namespace TrainConsistEdition.UI.WF
         public MainForm()
         {
             InitializeComponent();
-            //Загружаем пути к необходимым папкам
-            LoadSettings();
-
             //Создаем основной контроллер
             controller = new CreateConsistController();
-
+            //Загружаем пути к необходимым папкам
+            LoadSettings();
         }
-
-        
 
         //Обработчики событий нажатия на кнопки
         #region Обработчики событий нажатия на кнопки
@@ -263,50 +259,56 @@ namespace TrainConsistEdition.UI.WF
         /// </summary>
         private void LoadSettings()
         {
-            //Объявляем контроллер управлениян астройками
+            //Объявляем контроллер управлениян настройками
             var settingsController = new ApplicationSettingsController();
             //Пытаемся получить настройки из конфигурационного файла
             var res = settingsController.GetApplicationDirectory();
             if (res)
             {
                 //Если настройки получены проводим инициализацию UI
-                GetSettings();
-            }
-            else //Иначе просим пользователя указать каталог с игрой
-            {
-                GetOkMessage("Для начала работы приложения укажите каталог с установленный RRS");
-                //Открываем диалог выбора каталога
-                var folder = new FolderBrowserDialog();
-                //Проверяем выбрал ли пользователь директорию
-                if (folder.ShowDialog() == DialogResult.OK)
-                {
-                    //Получаем путь к выбранной директории
-                    var path = folder.SelectedPath;
-                    //Проверяем, что пользователь выбрал веную директорию с RRS
-                    if (Directory.Exists(path + @"/cfg"))
-                    {
-                        //Вызываем на контроллере метод устанавливающий директорию игры и передаем внего путь
-                        settingsController.SetApplicationDirectory(path);
-                        //Вызываем локальную функцию получения настроек
-                        GetSettings();
-                    }
-                }
-                else
-                {
-                    GetErrorMessage("Убедитесь, что RRS установлена или правильно укажите каталог с игрой");
-                    //Перезапускаем метод установки начального каталога с игрой
-                    LoadSettings();
-                }
-
-            }
-
-            //Локаьная функция получающая пути к папкам и 
-            void GetSettings()
-            {
                 //Получае пути к необходимым папкам игры в кортеж
                 (string, string) dirs = settingsController.GetVehecleAndCoupleTypeDirrectores();
                 //Вызываем метод применяющий начальные настройки отображения данных в UI
                 InitialListBox(dirs.Item1, dirs.Item2);
+            }
+            else //Иначе просим пользователя указать каталог с игрой
+            {
+                GetOkMessage("Для начала работы приложения в меню укажите каталог с установленным RRS");
+            }
+
+        }
+
+        /// <summary>
+        /// Метод позволяющий пьзователю выбрать каталог с игрой и записать его в конфигурационный файл
+        /// </summary>
+        private void SaveSettings()
+        {
+            //Объявляем контроллер управлениян настройками
+            var settingsController = new ApplicationSettingsController();
+            
+            //Открываем диалог выбора каталога
+            var folder = new FolderBrowserDialog();
+            //Проверяем выбрал ли пользователь директорию
+            if (folder.ShowDialog() == DialogResult.OK)
+            {
+                //Получаем путь к выбранной директории
+                var path = folder.SelectedPath;
+                //Проверяем, что пользователь выбрал верную директорию с RRS
+                if (Directory.Exists(path + @"/cfg"))
+                {
+                    //Вызываем на контроллере метод устанавливающий директорию игры и передаем внего путь
+                    settingsController.SetApplicationDirectory(path);
+                    //Вызываем локальную функцию получения настроек
+                    LoadSettings();
+                }
+                else
+                {
+                    GetErrorMessage("Убедитесь, что RRS установлен или правильно укажите каталог с игрой");
+                }
+            }
+            else
+            {
+                GetErrorMessage("Убедитесь, что RRS установлен или правильно укажите каталог с игрой");
             }
         }
 
@@ -369,15 +371,17 @@ namespace TrainConsistEdition.UI.WF
             }
         }
 
-
-
-
-
-
-
+        /// <summary>
+        /// Обработчик выбора пункта меню
+        /// </summary>
+        private void MenuItem_SetFolders_Click(object sender, EventArgs e)
+        {
+            //Вызываем метод получения пути к игре и записи его в файл настроек
+            SaveSettings();
+        }
 
         #endregion
 
-      
+
     }
 }

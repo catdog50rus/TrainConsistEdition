@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel_Main = new System.Windows.Forms.Panel();
             this.panel_Consist = new System.Windows.Forms.Panel();
             this.groupBox_Consist = new System.Windows.Forms.GroupBox();
@@ -74,6 +75,9 @@
             this.label_ConsistOptions = new System.Windows.Forms.Label();
             this.button_Serialize = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_SetFolders = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_Main.SuspendLayout();
             this.panel_Consist.SuspendLayout();
             this.groupBox_Consist.SuspendLayout();
@@ -82,6 +86,7 @@
             this.groupBox_Loco.SuspendLayout();
             this.panel_Options.SuspendLayout();
             this.groupBox_TrainOptons.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_Main
@@ -91,7 +96,7 @@
             this.panel_Main.Controls.Add(this.panel_Consist);
             this.panel_Main.Controls.Add(this.panel_Options);
             this.panel_Main.Controls.Add(this.button_Serialize);
-            this.panel_Main.Location = new System.Drawing.Point(2, 3);
+            this.panel_Main.Location = new System.Drawing.Point(0, 38);
             this.panel_Main.Name = "panel_Main";
             this.panel_Main.Size = new System.Drawing.Size(919, 613);
             this.panel_Main.TabIndex = 0;
@@ -531,12 +536,40 @@
             this.button_Serialize.UseVisualStyleBackColor = true;
             this.button_Serialize.Click += new System.EventHandler(this.Button_Serialize_Click);
             // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(925, 24);
+            this.menuStrip.TabIndex = 1;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItem_SetFolders});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // MenuItem_SetFolders
+            // 
+            this.MenuItem_SetFolders.Name = "MenuItem_SetFolders";
+            this.MenuItem_SetFolders.Size = new System.Drawing.Size(304, 22);
+            this.MenuItem_SetFolders.Text = "Указать расположение папки с игрой RRS";
+            this.MenuItem_SetFolders.Click += new System.EventHandler(this.MenuItem_SetFolders_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(925, 620);
+            this.ClientSize = new System.Drawing.Size(925, 663);
             this.Controls.Add(this.panel_Main);
+            this.Controls.Add(this.menuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редоктор составов RRS";
@@ -553,7 +586,10 @@
             this.panel_Options.PerformLayout();
             this.groupBox_TrainOptons.ResumeLayout(false);
             this.groupBox_TrainOptons.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -605,6 +641,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_Count;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_SetFolders;
     }
 }
 

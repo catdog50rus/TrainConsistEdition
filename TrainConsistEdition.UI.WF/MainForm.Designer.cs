@@ -30,10 +30,11 @@
         {
             this.panel_Main = new System.Windows.Forms.Panel();
             this.panel_Consist = new System.Windows.Forms.Panel();
-            this.button_DeleteVehecle = new System.Windows.Forms.Button();
+            this.groupBox_Consist = new System.Windows.Forms.GroupBox();
             this.dataGridView_Consists = new System.Windows.Forms.DataGridView();
             this.Column_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button_DeleteVehecle = new System.Windows.Forms.Button();
             this.groupBox_vehcle = new System.Windows.Forms.GroupBox();
             this.textBox_Coeff = new System.Windows.Forms.TextBox();
             this.button_AddVagon = new System.Windows.Forms.Button();
@@ -72,8 +73,10 @@
             this.label_Title = new System.Windows.Forms.Label();
             this.label_ConsistOptions = new System.Windows.Forms.Label();
             this.button_Serialize = new System.Windows.Forms.Button();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.panel_Main.SuspendLayout();
             this.panel_Consist.SuspendLayout();
+            this.groupBox_Consist.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Consists)).BeginInit();
             this.groupBox_vehcle.SuspendLayout();
             this.groupBox_Loco.SuspendLayout();
@@ -96,8 +99,7 @@
             // panel_Consist
             // 
             this.panel_Consist.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel_Consist.Controls.Add(this.button_DeleteVehecle);
-            this.panel_Consist.Controls.Add(this.dataGridView_Consists);
+            this.panel_Consist.Controls.Add(this.groupBox_Consist);
             this.panel_Consist.Controls.Add(this.groupBox_vehcle);
             this.panel_Consist.Controls.Add(this.label_ConsistEdition);
             this.panel_Consist.Controls.Add(this.groupBox_Loco);
@@ -106,17 +108,17 @@
             this.panel_Consist.Size = new System.Drawing.Size(903, 268);
             this.panel_Consist.TabIndex = 2;
             // 
-            // button_DeleteVehecle
+            // groupBox_Consist
             // 
-            this.button_DeleteVehecle.BackColor = System.Drawing.Color.LightCoral;
-            this.button_DeleteVehecle.Enabled = false;
-            this.button_DeleteVehecle.Location = new System.Drawing.Point(699, 210);
-            this.button_DeleteVehecle.Name = "button_DeleteVehecle";
-            this.button_DeleteVehecle.Size = new System.Drawing.Size(147, 39);
-            this.button_DeleteVehecle.TabIndex = 23;
-            this.button_DeleteVehecle.Text = "Отцепить";
-            this.button_DeleteVehecle.UseVisualStyleBackColor = false;
-            this.button_DeleteVehecle.Click += new System.EventHandler(this.Button_DeleteVehecle_Click);
+            this.groupBox_Consist.Controls.Add(this.dataGridView_Consists);
+            this.groupBox_Consist.Controls.Add(this.button_DeleteVehecle);
+            this.groupBox_Consist.Enabled = false;
+            this.groupBox_Consist.Location = new System.Drawing.Point(636, 30);
+            this.groupBox_Consist.Name = "groupBox_Consist";
+            this.groupBox_Consist.Size = new System.Drawing.Size(260, 219);
+            this.groupBox_Consist.TabIndex = 24;
+            this.groupBox_Consist.TabStop = false;
+            this.groupBox_Consist.Text = "Состав поезда";
             // 
             // dataGridView_Consists
             // 
@@ -126,24 +128,39 @@
             this.dataGridView_Consists.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_Name,
             this.Column_Count});
-            this.dataGridView_Consists.Location = new System.Drawing.Point(649, 34);
+            this.dataGridView_Consists.Location = new System.Drawing.Point(6, 19);
             this.dataGridView_Consists.Name = "dataGridView_Consists";
+            this.dataGridView_Consists.RowHeadersVisible = false;
             this.dataGridView_Consists.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView_Consists.ShowEditingIcon = false;
-            this.dataGridView_Consists.Size = new System.Drawing.Size(247, 153);
+            this.dataGridView_Consists.Size = new System.Drawing.Size(248, 138);
             this.dataGridView_Consists.TabIndex = 22;
+            this.dataGridView_Consists.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_Consists_CellEndEdit);
             // 
             // Column_Name
             // 
             this.Column_Name.HeaderText = "Наименование";
             this.Column_Name.Name = "Column_Name";
-            this.Column_Name.Width = 120;
+            this.Column_Name.ReadOnly = true;
+            this.Column_Name.Width = 160;
             // 
             // Column_Count
             // 
             this.Column_Count.HeaderText = "Количество";
             this.Column_Count.Name = "Column_Count";
             this.Column_Count.Width = 80;
+            // 
+            // button_DeleteVehecle
+            // 
+            this.button_DeleteVehecle.BackColor = System.Drawing.Color.LightCoral;
+            this.button_DeleteVehecle.Enabled = false;
+            this.button_DeleteVehecle.Location = new System.Drawing.Point(66, 180);
+            this.button_DeleteVehecle.Name = "button_DeleteVehecle";
+            this.button_DeleteVehecle.Size = new System.Drawing.Size(147, 39);
+            this.button_DeleteVehecle.TabIndex = 23;
+            this.button_DeleteVehecle.Text = "Отцепить";
+            this.button_DeleteVehecle.UseVisualStyleBackColor = false;
+            this.button_DeleteVehecle.Click += new System.EventHandler(this.Button_DeleteVehecle_Click);
             // 
             // groupBox_vehcle
             // 
@@ -526,6 +543,7 @@
             this.panel_Main.ResumeLayout(false);
             this.panel_Consist.ResumeLayout(false);
             this.panel_Consist.PerformLayout();
+            this.groupBox_Consist.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Consists)).EndInit();
             this.groupBox_vehcle.ResumeLayout(false);
             this.groupBox_vehcle.PerformLayout();
@@ -577,14 +595,16 @@
         private System.Windows.Forms.Button button_AddVagon;
         private System.Windows.Forms.TextBox textBox_FileName;
         private System.Windows.Forms.Label label_FileName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Count;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox_Coeff;
         private System.Windows.Forms.GroupBox groupBox_TrainOptons;
         private System.Windows.Forms.CheckBox checkBox_TrainOptions;
         private System.Windows.Forms.Label label_TrainOptionsHide;
         private System.Windows.Forms.Button button_DeleteVehecle;
+        private System.Windows.Forms.GroupBox groupBox_Consist;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Count;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
     }
 }
 

@@ -102,9 +102,38 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// Метод удаления единицы подвижного состава из поезда
         /// </summary>
         /// <param name="index">Индекс удаляемой единицы</param>
-        public void RemoveTrainVehicle(int index)
+        public bool RemoveTrainVehicle(int index)
         {
-            _listVehicles.RemoveAt(index);
+            try
+            {
+                _listVehicles.RemoveAt(index);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            
+        }
+
+        /// <summary>
+        /// Метод редактирования количества единицы подвижного состава
+        /// </summary>
+        /// <param name="index">Индекс редактируемой единицы</param>
+        /// <param name="count">Количество</param>
+        public bool EditTrainVehicleCount(int index, int count)
+        {
+            try
+            {
+                _listVehicles[index].Count = count;
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            
         }
 
         /// <summary>

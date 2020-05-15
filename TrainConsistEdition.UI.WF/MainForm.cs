@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrainConsistEdition.BL.Controllers.Controllers;
+using TrainConsistEdition.BL.Models.Trains;
 
 namespace TrainConsistEdition.UI.WF
 {
@@ -17,7 +18,8 @@ namespace TrainConsistEdition.UI.WF
         /// <summary>
         /// Объявляем модель основного контроллера
         /// </summary>
-        private readonly CreateConsistController controller;
+        private readonly CreateConsistController createController;
+        
         private string pathRRS;
 
         /// <summary>
@@ -27,7 +29,7 @@ namespace TrainConsistEdition.UI.WF
         {
             InitializeComponent();
             //Создаем основной контроллер
-            controller = new CreateConsistController();
+            createController = new CreateConsistController();
             //Загружаем пути к необходимым папкам
             LoadSettings();
         }
@@ -51,7 +53,7 @@ namespace TrainConsistEdition.UI.WF
                 var payloadCoeff = 1.0;
 
                 //Передаем параметры в контроллер дл инициализации модели
-                controller.AddTrainVehicle(module, moduleCfg, locoCount, payloadCoeff);
+                createController.AddTrainVehicle(module, moduleCfg, locoCount, payloadCoeff);
                 //Вызываем вспомогательный метод управления dataGridView_Consists и кнопками
                 SetDataGrid(moduleCfg, locoCount, payloadCoeff);
                 //Вызываем MessageBox
@@ -79,6 +81,7 @@ namespace TrainConsistEdition.UI.WF
             //Разблокируем кнопки
             button_Serialize.Enabled = true;
             button_DeleteVehecle.Enabled = true;
+            button_Clear.Enabled = true;
             
         }
 
@@ -98,7 +101,7 @@ namespace TrainConsistEdition.UI.WF
                 var payloadCoeff = (double.TryParse(textBox_Coeff.Text, out double coeff) && coeff <= 1.0 && coeff >= 0) ? coeff : 1.0;
 
                 //Передаем параметры в контроллер дл инициализации модели
-                controller.AddTrainVehicle(module, moduleCfg, vagonCount, payloadCoeff);
+                createController.AddTrainVehicle(module, moduleCfg, vagonCount, payloadCoeff);
                 //Добавлям выбранный локомотив в dataGridView_Consists
                 SetDataGrid(moduleCfg, vagonCount, payloadCoeff);
                 //Вызываем MessageBox
@@ -123,7 +126,7 @@ namespace TrainConsistEdition.UI.WF
             //Получаем от пользователя имя итогового файла, по умолчанию имя файла "default"
             var fileName = textBox_FileName.Text == "" ? "defailt" : textBox_FileName.Text;
             //Создаем контроллер сериализации и передаем ему основной контроллер и имя итогового файла
-            var serialaze = new SerializeController(controller, fileName);
+            var serialaze = new SerializeController(createController, fileName);
             //Сериализируем итоговый поезд в XML файл и передаем результат выполнения в MessageBox
             GetMessage(serialaze.SerializeConsist(pathRRS));
             //Локальная функция, вызывающая MessageBox в соответствии с итогами проведения сериализации
@@ -153,7 +156,7 @@ namespace TrainConsistEdition.UI.WF
                 //Получаем индекс выбранной пользователем единицы подвижного состава
                 var selectedVagon = dataGridView_Consists.CurrentCell.RowIndex;
                 //Вызываем метод удаления единицы подвижного состава из списка модели
-                GetMessage(controller.RemoveTrainVehicle(selectedVagon));
+                GetMessage(createController.RemoveTrainVehicle(selectedVagon));
 
                 //Удаляем выбранную единицу подвижного состава из dataGridView_Consists
                 dataGridView_Consists.Rows.RemoveAt(dataGridView_Consists.CurrentCell.RowIndex);
@@ -191,7 +194,7 @@ namespace TrainConsistEdition.UI.WF
 
                 //Вызываем метод редактирования количества единицы подвижного состава
                 //и передаем результат в локадьную функию вызова MessageBox 
-                GetMessage(controller.EditTrainVehicleCount(selectedVagon, vagonCount));
+                GetMessage(createController.EditTrainVehicleCount(selectedVagon, vagonCount));
                 //Меняем значение ячейки количетсво в dataGridView_Consists
                 dataGridView_Consists.CurrentCell.Value = int.TryParse(value.ToString(), out int res) ? res : 1;
 
@@ -229,7 +232,7 @@ namespace TrainConsistEdition.UI.WF
             var noAir = checkBox_NoAir.Checked;
 
             //Передаем в контроллер данные пользователя
-            controller.AddConsistOptions(title, descr, coupType, cabine, charginPress, initPress, noAir);
+            createController.AddConsistOptions(title, descr, coupType, cabine, charginPress, initPress, noAir);
         }
 
         #endregion
@@ -383,8 +386,68 @@ namespace TrainConsistEdition.UI.WF
             SaveSettings();
         }
 
+
         #endregion
 
+        private void ListBox_Loco_MouseClick(object sender, MouseEventArgs e)
+        {
+            Button_AddLoco_Click(sender, e);
+        }
 
+        private void ListBox_VagonName_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Button_AddVagon_Click(sender, e);
+        }
+
+        private void Button_Clear_Click(object sender, EventArgs e)
+        {
+            createController.Clear();
+            dataGridView_Consists.Rows.Clear();
+            button_Serialize.Enabled = false;
+            button_Clear.Enabled = false;
+        }
+
+        private void MenuItem_OpenConsist_Click(object sender, EventArgs e)
+        {
+            var openDialog = new OpenFileDialog
+            {
+                InitialDirectory = pathRRS
+            };
+            
+            if (openDialog.ShowDialog() == DialogResult.OK)
+            {
+                var openFile = openDialog.FileName;
+                //openController = new OpenFileController(openFile);
+                
+                createController.OpenConsistModel(openFile);
+                //createController..GetConsistModel();
+                var model = createController.SerializeModel;
+                SetOpenConsistOnDataGrid(model);
+                
+                textBox_FileName.Text = GetListBoxElement(new DirectoryInfo(openFile).Name).ToLower();
+
+            }
+            
+        }
+
+        private void SetOpenConsistOnDataGrid(ConsistModel model)
+        {
+            
+            foreach (var item in model.Vehicle)
+            {
+                SetDataGrid(item.ModuleConfig, item.Count, item.PayloadCoeff);
+            }
+
+            textBox_Description.Text = model.Common.Description;
+            textBox_ConsistName.Text = model.Common.Title;
+            textBox_CabineInVehicle.Text = model.Common.CabineInVehicle.ToString();
+            textBox_ChargingPressure.Text = model.Common.ChargingPressure.ToString();
+            textBox_InitMainResPressure.Text = model.Common.InitMainResPressure.ToString();
+            checkBox_NoAir.Checked = model.Common.NoAir;
+            listBox_CouplingType.SelectedItem = model.Common.CouplingModule;
+            //dataGridView_Consists..Enabled = true;
+            
+            
+        }
     }
 }

@@ -46,6 +46,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
             this.serializeModel = new SerializeModel();
         }
 
+
         /// <summary>
         /// Метод сериализирует выбранную модель состава в XML файл
         /// </summary>
@@ -75,6 +76,30 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
                 //Возвращаем флаг неудачи, если что-то пошло не так
                 return false;
             }          
+        }
+
+        public ConsistModel OpenConsist()
+        {
+            try
+            {
+                //Создаем экземпляр сериализатора
+                var formatter = new XmlSerializer(typeof(ConsistModel));
+                //Создаем файловый поток
+                var fs = new FileStream(fileName, FileMode.Open);
+                //Создаем экземпляр XmlReader на основе файлового потока и модели настроек сериализации
+                XmlReader xr = XmlReader.Create(fs);
+                //Сериализуем итоговый XML файл
+                var model = (ConsistModel)formatter.Deserialize(xr);
+                //Закрываем поток
+                fs.Close();
+                //Возвращаем флаг успеха сериализации
+                return model;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
     }

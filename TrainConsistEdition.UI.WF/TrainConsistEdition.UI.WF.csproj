@@ -117,6 +117,10 @@
       <Project>{835FE457-00C9-4CA7-A3FD-0872D1A81F40}</Project>
       <Name>TrainConsistEdition.BL.Controllers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TrainConsistEdition.BL.Models\TrainConsistEdition.BL.Models.csproj">
+      <Project>{71c25b20-1d26-4a36-b852-3bc58c7531e9}</Project>
+      <Name>TrainConsistEdition.BL.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">

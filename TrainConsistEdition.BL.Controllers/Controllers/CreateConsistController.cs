@@ -26,7 +26,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// <summary>
         /// Объявляем модель итогового состава. Эти данные будут сериализированы в итоговый XML файл
         /// </summary>
-        private readonly ConsistModel serializeModel;
+        public ConsistModel SerializeModel { get; set; }
 
         /// <summary>
         /// Конструктор инициализирует объявленные модели
@@ -37,7 +37,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
             consistModel = new TrainConsistInfoModel();
           
             _listVehicles = new List<TrainVehicleModel>();
-            serializeModel = new ConsistModel();
+            SerializeModel = new ConsistModel();
 
         }
 
@@ -69,7 +69,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
             consistModel.NoAir = noAir;
 
             //Передаем в итоговый состав модель свойств и характеристик
-            serializeModel.Common = consistModel;
+            SerializeModel.Common = consistModel;
         }
 
         /// <summary>
@@ -142,8 +142,21 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// <returns>Метод возвращает модель состава полностью готового к сериализации в XML файл</returns>
         public ConsistModel GetConsistModel()
         {
-            serializeModel.Vehicle = _listVehicles;
-            return serializeModel;
+            SerializeModel.Vehicle = _listVehicles;
+            return SerializeModel;
+        }
+
+        public void Clear()
+        {
+            _listVehicles.Clear();
+           
+        }
+
+        public void OpenConsistModel(string file)
+        {
+            var openfile = new SerializeController(this, file);
+            SerializeModel = openfile.OpenConsist();
+            
         }
     }
 }

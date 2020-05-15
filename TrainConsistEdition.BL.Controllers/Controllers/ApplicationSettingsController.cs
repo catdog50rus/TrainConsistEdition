@@ -81,9 +81,9 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// <summary>
         /// Метод возвращает кортеж путей к папкам установленной игры
         /// </summary>
-        public (string, string) GetVehecleAndCoupleTypeDirrectores()
+        public (string, string, string) GetVehecleAndCoupleTypeDirrectores()
         {
-            return ($"{settingsModel.AplicationDirectory}{settingsModel.VehecleDirrectory}", $"{settingsModel.AplicationDirectory}{settingsModel.CoupleTypeDirectory}");
+            return ($"{settingsModel.AplicationDirectory}{settingsModel.TrainsDirectory}",$"{settingsModel.AplicationDirectory}{settingsModel.VehecleDirrectory}", $"{settingsModel.AplicationDirectory}{settingsModel.CoupleTypeDirectory}");
         }
 
         /// <summary>

@@ -12,5 +12,6 @@ namespace TrainConsistEdition.BL.Models.Models
         public string AplicationDirectory { get; set; }
         public string VehecleDirrectory { get; set; } = @"\cfg\vehicles";
         public string CoupleTypeDirectory { get; set; } = @"\cfg\couplings";
+        public string TrainsDirectory { get; set; } = @"\cfg\trains\";
     }
 }

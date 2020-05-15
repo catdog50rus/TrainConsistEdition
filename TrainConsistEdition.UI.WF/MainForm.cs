@@ -18,6 +18,7 @@ namespace TrainConsistEdition.UI.WF
         /// Объявляем модель основного контроллера
         /// </summary>
         private readonly CreateConsistController controller;
+        private string pathRRS;
 
         /// <summary>
         /// Инициализация формы
@@ -52,7 +53,7 @@ namespace TrainConsistEdition.UI.WF
                 //Передаем параметры в контроллер дл инициализации модели
                 controller.AddTrainVehicle(module, moduleCfg, locoCount, payloadCoeff);
                 //Вызываем вспомогательный метод управления dataGridView_Consists и кнопками
-                SetDataGrid(moduleCfg, locoCount);
+                SetDataGrid(moduleCfg, locoCount, payloadCoeff);
                 //Вызываем MessageBox
                 GetOkMessage("Локомотив готов!");
             }
@@ -69,12 +70,12 @@ namespace TrainConsistEdition.UI.WF
         /// </summary>
         /// <param name="moduleCfg">Наименование</param>
         /// <param name="count">Количество</param>
-        private void SetDataGrid(string moduleCfg, int count)
+        private void SetDataGrid(string moduleCfg, int count, double coeff)
         {
             //Отображаем состав поезда
             groupBox_Consist.Enabled = true;
             //Добавлям выбранный локомотив в dataGridView_Consists
-            dataGridView_Consists.Rows.Add(moduleCfg, count);
+            dataGridView_Consists.Rows.Add(moduleCfg, count, coeff);
             //Разблокируем кнопки
             button_Serialize.Enabled = true;
             button_DeleteVehecle.Enabled = true;
@@ -99,9 +100,9 @@ namespace TrainConsistEdition.UI.WF
                 //Передаем параметры в контроллер дл инициализации модели
                 controller.AddTrainVehicle(module, moduleCfg, vagonCount, payloadCoeff);
                 //Добавлям выбранный локомотив в dataGridView_Consists
-                SetDataGrid(moduleCfg, vagonCount);
+                SetDataGrid(moduleCfg, vagonCount, payloadCoeff);
                 //Вызываем MessageBox
-                GetOkMessage("Вагон прицеплен!");
+                //GetOkMessage("Вагон прицеплен!");
             }
             else
             {
@@ -124,7 +125,7 @@ namespace TrainConsistEdition.UI.WF
             //Создаем контроллер сериализации и передаем ему основной контроллер и имя итогового файла
             var serialaze = new SerializeController(controller, fileName);
             //Сериализируем итоговый поезд в XML файл и передаем результат выполнения в MessageBox
-            GetMessage(serialaze.SerializeConsist());
+            GetMessage(serialaze.SerializeConsist(pathRRS));
             //Локальная функция, вызывающая MessageBox в соответствии с итогами проведения сериализации
             void GetMessage(bool result)
             {
@@ -267,9 +268,11 @@ namespace TrainConsistEdition.UI.WF
             {
                 //Если настройки получены проводим инициализацию UI
                 //Получае пути к необходимым папкам игры в кортеж
-                (string, string) dirs = settingsController.GetVehecleAndCoupleTypeDirrectores();
+                (string, string, string) dirs = settingsController.GetVehecleAndCoupleTypeDirrectores();
+                //Получаем путь к RRS
+                pathRRS = dirs.Item1;
                 //Вызываем метод применяющий начальные настройки отображения данных в UI
-                InitialListBox(dirs.Item1, dirs.Item2);
+                InitialListBox(dirs.Item2, dirs.Item3);
             }
             else //Иначе просим пользователя указать каталог с игрой
             {

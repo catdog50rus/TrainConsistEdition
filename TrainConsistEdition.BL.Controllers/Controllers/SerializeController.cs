@@ -51,14 +51,14 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// </summary>
         /// <param name="path">Путь к папке с составами</param>
         /// <returns>Возвращает результат сериалазации true или false</returns>
-        public bool SerializeConsist(string path = @"C:\Users\2334\AppData\Local\RRS\cfg\trains")
+        public bool SerializeConsist(string path)
         {
             try
             {
                 //Создаем экземпляр сериализатора
                 var formatter = new XmlSerializer(typeof(ConsistModel));
                 //Задаем полное имя итогового XML файла
-                var fileName = path + @"\" + this.fileName + ".xml";
+                var fileName = path + this.fileName + ".xml";
                 //Создаем файловый поток
                 var fs = new FileStream(fileName, FileMode.Create);
                 //Создаем экземпляр XMLWriter на основе файлового потока и модели настроек сериализации

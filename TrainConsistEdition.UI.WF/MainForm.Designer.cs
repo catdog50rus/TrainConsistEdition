@@ -35,6 +35,9 @@
             this.groupBox_Consist = new System.Windows.Forms.GroupBox();
             this.button_Change = new System.Windows.Forms.Button();
             this.dataGridView_Consists = new System.Windows.Forms.DataGridView();
+            this.Column_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Coeff = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_DeleteVehecle = new System.Windows.Forms.Button();
             this.groupBox_vehcle = new System.Windows.Forms.GroupBox();
             this.textBox_Coeff = new System.Windows.Forms.TextBox();
@@ -79,13 +82,10 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_CreateNewConsist = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_OpenConsist = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_SaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_SetFolders = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.Column_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Coeff = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.panel_Main.SuspendLayout();
             this.panel_Consist.SuspendLayout();
             this.groupBox_Consist.SuspendLayout();
@@ -192,6 +192,25 @@
             this.dataGridView_Consists.Size = new System.Drawing.Size(338, 138);
             this.dataGridView_Consists.TabIndex = 22;
             this.dataGridView_Consists.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_Consists_CellAndEdit);
+            // 
+            // Column_Name
+            // 
+            this.Column_Name.HeaderText = "Наименование";
+            this.Column_Name.Name = "Column_Name";
+            this.Column_Name.ReadOnly = true;
+            this.Column_Name.Width = 175;
+            // 
+            // Column_Count
+            // 
+            this.Column_Count.HeaderText = "Количество";
+            this.Column_Count.Name = "Column_Count";
+            this.Column_Count.Width = 80;
+            // 
+            // Column_Coeff
+            // 
+            this.Column_Coeff.HeaderText = "Загрузка";
+            this.Column_Coeff.Name = "Column_Coeff";
+            this.Column_Coeff.Width = 80;
             // 
             // button_DeleteVehecle
             // 
@@ -613,7 +632,6 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItem_CreateNewConsist,
             this.MenuItem_OpenConsist,
-            this.MenuItem_SaveAs,
             this.MenuItem_SetFolders,
             this.MenuItem_Exit});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -634,14 +652,6 @@
             this.MenuItem_OpenConsist.Text = "Открыть состав";
             this.MenuItem_OpenConsist.Click += new System.EventHandler(this.MenuItem_OpenConsist_Click);
             // 
-            // MenuItem_SaveAs
-            // 
-            this.MenuItem_SaveAs.Enabled = false;
-            this.MenuItem_SaveAs.Name = "MenuItem_SaveAs";
-            this.MenuItem_SaveAs.Size = new System.Drawing.Size(304, 22);
-            this.MenuItem_SaveAs.Text = "Сохрать как...";
-            this.MenuItem_SaveAs.Click += new System.EventHandler(this.MenuItem_SaveAs_Click);
-            // 
             // MenuItem_SetFolders
             // 
             this.MenuItem_SetFolders.Name = "MenuItem_SetFolders";
@@ -651,7 +661,6 @@
             // 
             // MenuItem_Exit
             // 
-            this.MenuItem_Exit.Enabled = false;
             this.MenuItem_Exit.Name = "MenuItem_Exit";
             this.MenuItem_Exit.Size = new System.Drawing.Size(304, 22);
             this.MenuItem_Exit.Text = "Выход";
@@ -660,25 +669,6 @@
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog";
-            // 
-            // Column_Name
-            // 
-            this.Column_Name.HeaderText = "Наименование";
-            this.Column_Name.Name = "Column_Name";
-            this.Column_Name.ReadOnly = true;
-            this.Column_Name.Width = 175;
-            // 
-            // Column_Count
-            // 
-            this.Column_Count.HeaderText = "Количество";
-            this.Column_Count.Name = "Column_Count";
-            this.Column_Count.Width = 80;
-            // 
-            // Column_Coeff
-            // 
-            this.Column_Coeff.HeaderText = "Загрузка";
-            this.Column_Coeff.Name = "Column_Coeff";
-            this.Column_Coeff.Width = 80;
             // 
             // MainForm
             // 
@@ -770,12 +760,12 @@
         private System.Windows.Forms.ToolStripMenuItem MenuItem_OpenConsist;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_CreateNewConsist;
-        private System.Windows.Forms.ToolStripMenuItem MenuItem_SaveAs;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_Exit;
         private System.Windows.Forms.Button button_Change;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_Count;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_Coeff;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
 

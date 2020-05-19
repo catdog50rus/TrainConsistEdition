@@ -102,8 +102,17 @@ namespace TrainConsistEdition.UI.WF
         /// </summary>
         private void MenuItem_Exit_Click(object sender, EventArgs e)
         {
-
+            if(createController != null)
+            {
+                DialogResult result = MessageBox.Show("Вся не сохраненная работа будет утеряна!\r\n Вы желаете выйти из приложения?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if(result == DialogResult.Yes)
+                {
+                    this.Close();
+                }
+            }
+            
         }
+            
 
         #endregion
 
@@ -177,20 +186,30 @@ namespace TrainConsistEdition.UI.WF
             //Вызываем метод, создающий свойства и характеристики поезда
             CreateConsistOption();
 
-            //Получаем от пользователя имя итогового файла, по умолчанию имя файла "default"
-            var fileName = textBox_FileName.Text == "" ? "defailt" : textBox_FileName.Text;
-            //Создаем контроллер сериализации и передаем ему основной контроллер и имя итогового файла
-            var serialaze = new SerializeController(createController, fileName);
-            //Сериализируем итоговый поезд в XML файл и передаем результат выполнения в MessageBox
-            var serializeResult = serialaze.SerializeConsist(pathRRS);
-            if (serializeResult.Item1)
+            //Открываем диалогоое окно записи файла
+            var saveDialog = new SaveFileDialog()
             {
-                GetOkMessage(serializeResult.Item2);
-            }
-            else
+                InitialDirectory = pathRRS,
+                Filter = "xml файлы (*.xml)|*.xml"
+            };
+            if (saveDialog.ShowDialog() == DialogResult.OK)
             {
-                GetErrorMessage(serializeResult.Item2);
+                //Получаем имя итогового файла
+                var file = saveDialog.FileName;
+                //Создаем контроллер сериализации и передаем ему основной контроллер и имя итогового файла
+                var serialaze = new SerializeController(createController, file);
+                //Сериализируем итоговый поезд в XML файл и передаем результат выполнения в MessageBox
+                var serializeResult = serialaze.SerializeConsist();
+                if (serializeResult.Item1)
+                {
+                    GetOkMessage(serializeResult.Item2);
+                }
+                else
+                {
+                    GetErrorMessage(serializeResult.Item2);
+                }
             }
+            
             
         }
 

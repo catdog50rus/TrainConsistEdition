@@ -16,17 +16,17 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// <summary>
         /// Объявляем модель свойств и характеристик состава
         /// </summary>
-        private readonly TrainConsistInfoModel consistModel;
+        private readonly TrainConsistInfoModel consistInfoModel;
 
         /// <summary>
         /// Объявляем список единиц состава поезда
         /// </summary>
-        private readonly List<TrainVehicleModel> _listVehicles;
+        private readonly List<TrainVehicleModel> listVehicles;
 
         /// <summary>
         /// Объявляем модель итогового состава. Эти данные будут сериализированы в итоговый XML файл
         /// </summary>
-        public ConsistModel SerializeModel { get; set; }
+        public ConsistModel ConsistModel { get; set; }
 
         /// <summary>
         /// Конструктор инициализирует объявленные модели
@@ -34,11 +34,27 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         public CreateConsistController()
         {
             
-            consistModel = new TrainConsistInfoModel();
+            consistInfoModel = new TrainConsistInfoModel();
           
-            _listVehicles = new List<TrainVehicleModel>();
-            SerializeModel = new ConsistModel();
+            listVehicles = new List<TrainVehicleModel>();
+            ConsistModel = new ConsistModel();
 
+        }
+        public CreateConsistController(ConsistModel model)
+        {
+            //consistInfoModel = new TrainConsistInfoModel();
+            consistInfoModel = model.Common;
+            listVehicles = model.Vehicle;
+            ConsistModel = new ConsistModel();
+
+        }
+
+        public CreateConsistController(TrainConsistInfoModel consistInfoModel, List<TrainVehicleModel> trainVehicleModel)
+        {
+            this.consistInfoModel = new TrainConsistInfoModel();
+
+            listVehicles = new List<TrainVehicleModel>();
+            ConsistModel = new ConsistModel();
         }
 
         /// <summary>
@@ -60,16 +76,16 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
                                       bool noAir)
         {
             //Добавляем данные поезда в модель
-            consistModel.Title = title;
-            consistModel.Description = description;
-            consistModel.CabineInVehicle = cabinInVehicle;
-            consistModel.CouplingModule = couplingModule;
-            consistModel.ChargingPressure = chargingPressure;
-            consistModel.InitMainResPressure = intMainResPressure;
-            consistModel.NoAir = noAir;
+            consistInfoModel.Title = title;
+            consistInfoModel.Description = description;
+            consistInfoModel.CabineInVehicle = cabinInVehicle;
+            consistInfoModel.CouplingModule = couplingModule;
+            consistInfoModel.ChargingPressure = chargingPressure;
+            consistInfoModel.InitMainResPressure = intMainResPressure;
+            consistInfoModel.NoAir = noAir;
 
             //Передаем в итоговый состав модель свойств и характеристик
-            SerializeModel.Common = consistModel;
+            ConsistModel.Common = consistInfoModel;
         }
 
         /// <summary>
@@ -95,7 +111,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
             };
             
             //Вносим единицу состава в список подвижного состава поезда
-            _listVehicles.Add(vehicle);
+            listVehicles.Add(vehicle);
         }
 
         /// <summary>
@@ -106,7 +122,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         {
             try
             {
-                _listVehicles.RemoveAt(index);
+                listVehicles.RemoveAt(index);
                 return true;
             }
             catch (Exception)
@@ -125,7 +141,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         {
             try
             {
-                _listVehicles[index].Count = count;
+                listVehicles[index].Count = count;
                 return true;
             }
             catch (Exception)
@@ -142,21 +158,15 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// <returns>Метод возвращает модель состава полностью готового к сериализации в XML файл</returns>
         public ConsistModel GetConsistModel()
         {
-            SerializeModel.Vehicle = _listVehicles;
-            return SerializeModel;
+            ConsistModel.Vehicle = listVehicles;
+            return ConsistModel;
         }
 
         public void Clear()
         {
-            _listVehicles.Clear();
+            listVehicles.Clear();
            
         }
 
-        public void OpenConsistModel(string file)
-        {
-            var openfile = new SerializeController(this, file);
-            SerializeModel = openfile.OpenConsist();
-            
-        }
     }
 }

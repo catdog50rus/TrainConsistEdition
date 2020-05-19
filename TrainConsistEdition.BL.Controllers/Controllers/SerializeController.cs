@@ -19,7 +19,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// <summary>
         /// Наименование XML файла выбранное пользователем
         /// </summary>
-        private readonly string fileName;
+        private readonly string filename;
 
         /// <summary>
         /// Объявление модели конечного состава пезда
@@ -36,14 +36,20 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// </summary>
         /// <param name="controller">Контроллер создания подвижного состава</param>
         /// <param name="fileName">Имя XML файла, выбранное пользователем</param>
-        public SerializeController(CreateConsistController controller, string fileName)
+        public SerializeController(CreateConsistController controller, string filename)
         {
             //Получаем итоговую модель поезда из контроллера
             this.consistModel = controller.GetConsistModel();
             //Получае имя XML файла
-            this.fileName = fileName;
+            this.filename = filename;
             //Инициализируем моделль настроек сериализации
             this.serializeModel = new SerializeModel();
+        }
+
+        public SerializeController(string filename)
+        {
+            consistModel = new ConsistModel();
+            this.filename = filename;
         }
 
 
@@ -59,7 +65,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
                 //Создаем экземпляр сериализатора
                 var formatter = new XmlSerializer(typeof(ConsistModel));
                 //Задаем полное имя итогового XML файла
-                var fileName = path + this.fileName + ".xml";
+                var fileName = path + this.filename + ".xml";
                 //Создаем файловый поток
                 var fs = new FileStream(fileName, FileMode.Create);
                 //Создаем экземпляр XMLWriter на основе файлового потока и модели настроек сериализации
@@ -78,14 +84,14 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
             }          
         }
 
-        public ConsistModel OpenConsist()
+        public (ConsistModel, bool, string) OpenConsist()
         {
             try
             {
                 //Создаем экземпляр сериализатора
                 var formatter = new XmlSerializer(typeof(ConsistModel));
                 //Создаем файловый поток
-                var fs = new FileStream(fileName, FileMode.Open);
+                var fs = new FileStream(filename, FileMode.Open);
                 //Создаем экземпляр XmlReader на основе файлового потока и модели настроек сериализации
                 XmlReader xr = XmlReader.Create(fs);
                 //Сериализуем итоговый XML файл
@@ -93,12 +99,12 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
                 //Закрываем поток
                 fs.Close();
                 //Возвращаем флаг успеха сериализации
-                return model;
+                return (model, true, "Ok!");
             }
             catch (Exception)
             {
 
-                throw;
+                return (consistModel, false, "Не удалось преобразовать файл! Убедитесь, что открываемый файл соответствует файлу состава.");
             }
         }
 

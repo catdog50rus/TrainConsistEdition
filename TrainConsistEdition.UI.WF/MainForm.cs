@@ -18,7 +18,8 @@ namespace TrainConsistEdition.UI.WF
         /// <summary>
         /// Объявляем модель основного контроллера
         /// </summary>
-        private readonly CreateConsistController createController;
+        private CreateConsistController createController;
+        private SerializeController serializeController;
         
         private string pathRRS;
 
@@ -29,7 +30,7 @@ namespace TrainConsistEdition.UI.WF
         {
             InitializeComponent();
             //Создаем основной контроллер
-            createController = new CreateConsistController();
+            //createController = new CreateConsistController();
             //Загружаем пути к необходимым папкам
             LoadSettings();
         }
@@ -409,6 +410,7 @@ namespace TrainConsistEdition.UI.WF
 
         private void MenuItem_OpenConsist_Click(object sender, EventArgs e)
         {
+            createController = null;
             var openDialog = new OpenFileDialog
             {
                 InitialDirectory = pathRRS
@@ -416,15 +418,25 @@ namespace TrainConsistEdition.UI.WF
             
             if (openDialog.ShowDialog() == DialogResult.OK)
             {
-                var openFile = openDialog.FileName;
-                //openController = new OpenFileController(openFile);
+                var filename = openDialog.FileName;
+                serializeController = new SerializeController(filename);
+
+
+                var serializeResult = serializeController.OpenConsist();
+                if (serializeResult.Item2)
+                {
+                    createController = new CreateConsistController(serializeResult.Item1);
+                    SetOpenConsistOnDataGrid(serializeResult.Item1);
+                    textBox_FileName.Text = GetListBoxElement(new DirectoryInfo(filename).Name).ToLower();
+
+                }
+                else
+                {
+                    GetErrorMessage(serializeResult.Item3);
+                }
                 
-                createController.OpenConsistModel(openFile);
-                //createController..GetConsistModel();
-                var model = createController.SerializeModel;
-                SetOpenConsistOnDataGrid(model);
                 
-                textBox_FileName.Text = GetListBoxElement(new DirectoryInfo(openFile).Name).ToLower();
+                
 
             }
             

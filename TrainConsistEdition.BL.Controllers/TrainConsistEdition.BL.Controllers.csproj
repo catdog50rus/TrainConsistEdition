@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="Controllers\ApplicationSettingsController.cs" />
     <Compile Include="Controllers\CreateConsistController.cs" />
-    <Compile Include="Controllers\OpenFileController.cs" />
     <Compile Include="Controllers\SerializeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

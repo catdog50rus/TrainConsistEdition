@@ -79,7 +79,9 @@
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.создатьНовыйСоставToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_OpenConsist = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохратьКакToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_SetFolders = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.panel_Main.SuspendLayout();
@@ -610,11 +612,20 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.создатьНовыйСоставToolStripMenuItem,
             this.MenuItem_OpenConsist,
+            this.сохратьКакToolStripMenuItem,
             this.MenuItem_SetFolders});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // создатьНовыйСоставToolStripMenuItem
+            // 
+            this.создатьНовыйСоставToolStripMenuItem.Enabled = false;
+            this.создатьНовыйСоставToolStripMenuItem.Name = "создатьНовыйСоставToolStripMenuItem";
+            this.создатьНовыйСоставToolStripMenuItem.Size = new System.Drawing.Size(304, 22);
+            this.создатьНовыйСоставToolStripMenuItem.Text = "Создать новый состав";
             // 
             // MenuItem_OpenConsist
             // 
@@ -622,6 +633,13 @@
             this.MenuItem_OpenConsist.Size = new System.Drawing.Size(304, 22);
             this.MenuItem_OpenConsist.Text = "Открыть состав";
             this.MenuItem_OpenConsist.Click += new System.EventHandler(this.MenuItem_OpenConsist_Click);
+            // 
+            // сохратьКакToolStripMenuItem
+            // 
+            this.сохратьКакToolStripMenuItem.Enabled = false;
+            this.сохратьКакToolStripMenuItem.Name = "сохратьКакToolStripMenuItem";
+            this.сохратьКакToolStripMenuItem.Size = new System.Drawing.Size(304, 22);
+            this.сохратьКакToolStripMenuItem.Text = "Сохрать как...";
             // 
             // MenuItem_SetFolders
             // 
@@ -726,6 +744,8 @@
         private System.Windows.Forms.Button button_Clear;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_OpenConsist;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.ToolStripMenuItem создатьНовыйСоставToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сохратьКакToolStripMenuItem;
     }
 }
 

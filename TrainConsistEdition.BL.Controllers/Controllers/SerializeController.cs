@@ -58,7 +58,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// </summary>
         /// <param name="path">Путь к папке с составами</param>
         /// <returns>Возвращает результат сериалазации true или false</returns>
-        public bool SerializeConsist(string path)
+        public (bool,string) SerializeConsist(string path)
         {
             try
             {
@@ -75,12 +75,12 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
                 //Закрываем поток
                 fs.Close();
                 //Возвращаем флаг успеха сериализации
-                return true;
+                return (true, "Состав успешно создан!");
             }
             catch (Exception)
             {
                 //Возвращаем флаг неудачи, если что-то пошло не так
-                return false;
+                return (false, "Не удалось сформировать состав!");
             }          
         }
 

@@ -33,10 +33,8 @@
             this.button_Clear = new System.Windows.Forms.Button();
             this.panel_Consist = new System.Windows.Forms.Panel();
             this.groupBox_Consist = new System.Windows.Forms.GroupBox();
+            this.button_Change = new System.Windows.Forms.Button();
             this.dataGridView_Consists = new System.Windows.Forms.DataGridView();
-            this.Column_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Coeff = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_DeleteVehecle = new System.Windows.Forms.Button();
             this.groupBox_vehcle = new System.Windows.Forms.GroupBox();
             this.textBox_Coeff = new System.Windows.Forms.TextBox();
@@ -79,11 +77,15 @@
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.создатьНовыйСоставToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_CreateNewConsist = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_OpenConsist = new System.Windows.Forms.ToolStripMenuItem();
-            this.сохратьКакToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_SaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_SetFolders = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.Column_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Coeff = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_Main.SuspendLayout();
             this.panel_Consist.SuspendLayout();
             this.groupBox_Consist.SuspendLayout();
@@ -112,6 +114,7 @@
             this.panel_Main.Name = "panel_Main";
             this.panel_Main.Size = new System.Drawing.Size(1084, 637);
             this.panel_Main.TabIndex = 0;
+            this.panel_Main.Visible = false;
             // 
             // button_Clear
             // 
@@ -146,6 +149,7 @@
             // 
             // groupBox_Consist
             // 
+            this.groupBox_Consist.Controls.Add(this.button_Change);
             this.groupBox_Consist.Controls.Add(this.dataGridView_Consists);
             this.groupBox_Consist.Controls.Add(this.button_DeleteVehecle);
             this.groupBox_Consist.Enabled = false;
@@ -156,6 +160,20 @@
             this.groupBox_Consist.TabIndex = 24;
             this.groupBox_Consist.TabStop = false;
             this.groupBox_Consist.Text = "Состав поезда";
+            // 
+            // button_Change
+            // 
+            this.button_Change.BackColor = System.Drawing.Color.Goldenrod;
+            this.button_Change.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_Change.Enabled = false;
+            this.button_Change.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_Change.Location = new System.Drawing.Point(20, 176);
+            this.button_Change.Name = "button_Change";
+            this.button_Change.Size = new System.Drawing.Size(137, 39);
+            this.button_Change.TabIndex = 24;
+            this.button_Change.Text = "Заменить";
+            this.button_Change.UseVisualStyleBackColor = false;
+            this.button_Change.Click += new System.EventHandler(this.Button_Change_Click);
             // 
             // dataGridView_Consists
             // 
@@ -175,34 +193,15 @@
             this.dataGridView_Consists.TabIndex = 22;
             this.dataGridView_Consists.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_Consists_CellEndEdit);
             // 
-            // Column_Name
-            // 
-            this.Column_Name.HeaderText = "Наименование";
-            this.Column_Name.Name = "Column_Name";
-            this.Column_Name.ReadOnly = true;
-            this.Column_Name.Width = 175;
-            // 
-            // Column_Count
-            // 
-            this.Column_Count.HeaderText = "Количество";
-            this.Column_Count.Name = "Column_Count";
-            this.Column_Count.Width = 80;
-            // 
-            // Column_Coeff
-            // 
-            this.Column_Coeff.HeaderText = "Загрузка";
-            this.Column_Coeff.Name = "Column_Coeff";
-            this.Column_Coeff.Width = 80;
-            // 
             // button_DeleteVehecle
             // 
             this.button_DeleteVehecle.BackColor = System.Drawing.Color.LightCoral;
             this.button_DeleteVehecle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_DeleteVehecle.Enabled = false;
             this.button_DeleteVehecle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_DeleteVehecle.Location = new System.Drawing.Point(104, 176);
+            this.button_DeleteVehecle.Location = new System.Drawing.Point(188, 176);
             this.button_DeleteVehecle.Name = "button_DeleteVehecle";
-            this.button_DeleteVehecle.Size = new System.Drawing.Size(160, 39);
+            this.button_DeleteVehecle.Size = new System.Drawing.Size(137, 39);
             this.button_DeleteVehecle.TabIndex = 23;
             this.button_DeleteVehecle.Text = "Отцепить";
             this.button_DeleteVehecle.UseVisualStyleBackColor = false;
@@ -592,9 +591,9 @@
             this.button_Serialize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_Serialize.Location = new System.Drawing.Point(344, 584);
             this.button_Serialize.Name = "button_Serialize";
-            this.button_Serialize.Size = new System.Drawing.Size(165, 39);
+            this.button_Serialize.Size = new System.Drawing.Size(172, 39);
             this.button_Serialize.TabIndex = 21;
-            this.button_Serialize.Text = "Готово!";
+            this.button_Serialize.Text = "Сохранить состав";
             this.button_Serialize.UseVisualStyleBackColor = false;
             this.button_Serialize.Click += new System.EventHandler(this.Button_Serialize_Click);
             // 
@@ -612,20 +611,21 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.создатьНовыйСоставToolStripMenuItem,
+            this.MenuItem_CreateNewConsist,
             this.MenuItem_OpenConsist,
-            this.сохратьКакToolStripMenuItem,
-            this.MenuItem_SetFolders});
+            this.MenuItem_SaveAs,
+            this.MenuItem_SetFolders,
+            this.MenuItem_Exit});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // создатьНовыйСоставToolStripMenuItem
+            // MenuItem_CreateNewConsist
             // 
-            this.создатьНовыйСоставToolStripMenuItem.Enabled = false;
-            this.создатьНовыйСоставToolStripMenuItem.Name = "создатьНовыйСоставToolStripMenuItem";
-            this.создатьНовыйСоставToolStripMenuItem.Size = new System.Drawing.Size(304, 22);
-            this.создатьНовыйСоставToolStripMenuItem.Text = "Создать новый состав";
+            this.MenuItem_CreateNewConsist.Name = "MenuItem_CreateNewConsist";
+            this.MenuItem_CreateNewConsist.Size = new System.Drawing.Size(304, 22);
+            this.MenuItem_CreateNewConsist.Text = "Создать новый состав";
+            this.MenuItem_CreateNewConsist.Click += new System.EventHandler(this.MenuItem_CreateNewConsist_Click);
             // 
             // MenuItem_OpenConsist
             // 
@@ -634,12 +634,13 @@
             this.MenuItem_OpenConsist.Text = "Открыть состав";
             this.MenuItem_OpenConsist.Click += new System.EventHandler(this.MenuItem_OpenConsist_Click);
             // 
-            // сохратьКакToolStripMenuItem
+            // MenuItem_SaveAs
             // 
-            this.сохратьКакToolStripMenuItem.Enabled = false;
-            this.сохратьКакToolStripMenuItem.Name = "сохратьКакToolStripMenuItem";
-            this.сохратьКакToolStripMenuItem.Size = new System.Drawing.Size(304, 22);
-            this.сохратьКакToolStripMenuItem.Text = "Сохрать как...";
+            this.MenuItem_SaveAs.Enabled = false;
+            this.MenuItem_SaveAs.Name = "MenuItem_SaveAs";
+            this.MenuItem_SaveAs.Size = new System.Drawing.Size(304, 22);
+            this.MenuItem_SaveAs.Text = "Сохрать как...";
+            this.MenuItem_SaveAs.Click += new System.EventHandler(this.MenuItem_SaveAs_Click);
             // 
             // MenuItem_SetFolders
             // 
@@ -648,9 +649,37 @@
             this.MenuItem_SetFolders.Text = "Указать расположение папки с игрой RRS";
             this.MenuItem_SetFolders.Click += new System.EventHandler(this.MenuItem_SetFolders_Click);
             // 
+            // MenuItem_Exit
+            // 
+            this.MenuItem_Exit.Enabled = false;
+            this.MenuItem_Exit.Name = "MenuItem_Exit";
+            this.MenuItem_Exit.Size = new System.Drawing.Size(304, 22);
+            this.MenuItem_Exit.Text = "Выход";
+            this.MenuItem_Exit.Click += new System.EventHandler(this.MenuItem_Exit_Click);
+            // 
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog";
+            // 
+            // Column_Name
+            // 
+            this.Column_Name.HeaderText = "Наименование";
+            this.Column_Name.Name = "Column_Name";
+            this.Column_Name.ReadOnly = true;
+            this.Column_Name.Width = 175;
+            // 
+            // Column_Count
+            // 
+            this.Column_Count.HeaderText = "Количество";
+            this.Column_Count.Name = "Column_Count";
+            this.Column_Count.Width = 80;
+            // 
+            // Column_Coeff
+            // 
+            this.Column_Coeff.HeaderText = "Загрузка";
+            this.Column_Coeff.MaxInputLength = 1;
+            this.Column_Coeff.Name = "Column_Coeff";
+            this.Column_Coeff.Width = 80;
             // 
             // MainForm
             // 
@@ -737,15 +766,17 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_SetFolders;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Count;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Coeff;
         private System.Windows.Forms.GroupBox groupBox_Descr;
         private System.Windows.Forms.Button button_Clear;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_OpenConsist;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.ToolStripMenuItem создатьНовыйСоставToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сохратьКакToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_CreateNewConsist;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_SaveAs;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_Exit;
+        private System.Windows.Forms.Button button_Change;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Count;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Coeff;
     }
 }
 

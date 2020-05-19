@@ -33,27 +33,15 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// </summary>
         public CreateConsistController()
         {
-            
             consistInfoModel = new TrainConsistInfoModel();
-          
             listVehicles = new List<TrainVehicleModel>();
             ConsistModel = new ConsistModel();
-
         }
+        
         public CreateConsistController(ConsistModel model)
         {
-            //consistInfoModel = new TrainConsistInfoModel();
             consistInfoModel = model.Common;
             listVehicles = model.Vehicle;
-            ConsistModel = new ConsistModel();
-
-        }
-
-        public CreateConsistController(TrainConsistInfoModel consistInfoModel, List<TrainVehicleModel> trainVehicleModel)
-        {
-            this.consistInfoModel = new TrainConsistInfoModel();
-
-            listVehicles = new List<TrainVehicleModel>();
             ConsistModel = new ConsistModel();
         }
 
@@ -136,20 +124,38 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// Метод редактирования количества единицы подвижного состава
         /// </summary>
         /// <param name="index">Индекс редактируемой единицы</param>
-        /// <param name="count">Количество</param>
-        public bool EditTrainVehicleCount(int index, int count)
+        /// <param name="value">Количество</param>
+        public (bool,string) EditTrainVehicleCount(int index, int value)
         {
-            try
+            if(index < listVehicles.Count && index >= 0)
             {
-                listVehicles[index].Count = count;
-                return true;
+                listVehicles[index].Count = value;
+                
+                return (true, "Состав успешно отредактирован!");
             }
-            catch (Exception)
+            else
             {
+                return (false, "Не удалось отредоктировать состав!");
+            }
+        }
 
-                return false;
+        /// <summary>
+        /// Метод редактирования количества единицы подвижного состава
+        /// </summary>
+        /// <param name="index">Индекс редактируемой единицы</param>
+        /// <param name="value">Коэффициент загрузки вагона</param>
+        public (bool, string) EditTrainVehicleCount(int index, double value)
+        {
+            if (index < listVehicles.Count && index >= 0)
+            {
+                
+                listVehicles[index].PayloadCoeff = value;
+                return (true, "Состав успешно отредактирован!");
             }
-            
+            else
+            {
+                return (false, "Не удалось отредоктировать состав!");
+            }
         }
 
         /// <summary>
@@ -161,12 +167,5 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
             ConsistModel.Vehicle = listVehicles;
             return ConsistModel;
         }
-
-        public void Clear()
-        {
-            listVehicles.Clear();
-           
-        }
-
     }
 }

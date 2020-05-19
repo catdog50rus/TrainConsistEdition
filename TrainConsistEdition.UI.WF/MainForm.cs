@@ -120,7 +120,7 @@ namespace TrainConsistEdition.UI.WF
             if (validSelected)
             {
                 //Получаем значения параметров
-                var module = listBox_Loco.SelectedItem.ToString().TrimEnd('.', 'x', 'm', 'l');
+                var module = listBox_Loco.SelectedItem.ToString();
                 var moduleCfg = listBox_Loco.SelectedItem.ToString();
                 int locoCount = (int.TryParse(textBox_LocoCount.Text, out int count) && count != 0) ? count : 1;
                 var payloadCoeff = 1.0;
@@ -129,6 +129,7 @@ namespace TrainConsistEdition.UI.WF
                 createController.AddTrainVehicle(module, moduleCfg, locoCount, payloadCoeff);
                 //Вызываем вспомогательный метод управления dataGridView_Consists и кнопками
                 SetDataGrid(moduleCfg, locoCount, payloadCoeff);
+                listBox_Loco.ClearSelected();
 
             }
             else
@@ -158,6 +159,7 @@ namespace TrainConsistEdition.UI.WF
                 createController.AddTrainVehicle(module, moduleCfg, vagonCount, payloadCoeff);
                 //Добавлям выбранный локомотив в dataGridView_Consists
                 SetDataGrid(moduleCfg, vagonCount, payloadCoeff);
+                listBox_VagonName.ClearSelected();
             }
             else
             {
@@ -230,7 +232,22 @@ namespace TrainConsistEdition.UI.WF
 
         private void Button_Change_Click(object sender, EventArgs e)
         {
+            string module = "";
+            string moduleCfg = "";
+            
+            if(listBox_Loco.SelectedItems.Count != 0)
+            {
+                module = listBox_Loco.SelectedItem.ToString();
+                moduleCfg = listBox_Loco.SelectedItem.ToString();
 
+            }
+            if(listBox_VagonName.SelectedItems.Count != 0)
+            {
+                module = "passcar";
+                moduleCfg = listBox_VagonName.SelectedItem.ToString();
+            }
+
+            DataGridView_Consists_ChangeVehicle(module, moduleCfg);
         }
 
         private void Button_Clear_Click(object sender, EventArgs e)
@@ -383,6 +400,7 @@ namespace TrainConsistEdition.UI.WF
             button_DeleteVehecle.Enabled = false;
             button_Serialize.Enabled = false;
             button_Clear.Enabled = false;
+            button_Change.Enabled = false;
         }
 
 
@@ -462,7 +480,7 @@ namespace TrainConsistEdition.UI.WF
         /// <summary>
         /// Обаботчик редактирования значения ячейки "количество" в DataGridView_Consists
         /// </summary>
-        private void DataGridView_Consists_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView_Consists_CellAndEdit(object sender, DataGridViewCellEventArgs e)
         {
             //Проверяем есть ли данные в dataGridView_Consists
             if (!dataGridView_Consists.Rows[0].IsNewRow)
@@ -471,25 +489,22 @@ namespace TrainConsistEdition.UI.WF
                 var selectedVagon = dataGridView_Consists.CurrentCell.RowIndex;
                 
                 var column = dataGridView_Consists.CurrentCell.ColumnIndex;
-                (bool, string) editResult;// = (false, "");
+                (bool, string) editResult;
                 double editValue;
-                if (column == 1)
+                if (column == 1) //Колонка с количеством вагонов
                 {
                     //Получаем количество выбранной пользователем единицы подвижного состава
                     editValue = int.TryParse(dataGridView_Consists.CurrentCell.Value.ToString(), out int valueCount) && valueCount != 0 ? (int)valueCount : (int)1;
-                    //Вызываем метод редактирования количества единицы подвижного состава
-                    editResult = createController.EditTrainVehicleCount(selectedVagon, (int)editValue);
+                    //Вызываем перегрузку метода редактирования количества единицы подвижного состава
+                    editResult = createController.EditTrainVehicle(selectedVagon, (int)editValue);
                 }
-                else
+                else //Колонка с коэф.загрузки
                 {
                     //Получаем количество выбранной пользователем единицы подвижного состава
-                    editValue = double.TryParse(dataGridView_Consists.CurrentCell.Value.ToString(), out double valueCoef) && valueCoef != 0 ? valueCoef : 1.0;
-                    //Вызываем метод редактирования количества единицы подвижного состава
-                    editResult = createController.EditTrainVehicleCount(selectedVagon, editValue);
+                    editValue = double.TryParse(dataGridView_Consists.CurrentCell.Value.ToString(), out double valueCoef) && valueCoef > 0 && valueCoef <= 1.0 ? valueCoef : 1.0;
+                    //Вызываем перегрузку метод редактирования коеэф. загруженности подвижного состава
+                    editResult = createController.EditTrainVehicle(selectedVagon, editValue);
                 }
-
-                //Вызываем метод редактирования количества единицы подвижного состава
-                //var editResult = createController.EditTrainVehicleCount(selectedVagon, editValue);
 
                 //По результату, меняем значение ячейки в dataGridView_Consists и вызывающая MessageBox в соответствии с итогами проведения сериализации
                 if (editResult.Item1)
@@ -503,6 +518,34 @@ namespace TrainConsistEdition.UI.WF
                     GetErrorMessage(editResult.Item2);
                 }
                 
+            }
+        }
+
+        private void DataGridView_Consists_ChangeVehicle(string module, string moduleCfg)
+        {
+            //Проверяем есть ли данные в dataGridView_Consists
+            if (!dataGridView_Consists.Rows[0].IsNewRow)
+            {
+                //Получаем индекс выбранной пользователем единицы подвижного состава
+                var selectedVagon = dataGridView_Consists.CurrentCell.RowIndex;
+
+                
+                (bool, string) editResult;
+                editResult = createController.EditTrainVehicle(selectedVagon, module, moduleCfg);
+                
+
+                //По результату, меняем значение ячейки в dataGridView_Consists и вызывающая MessageBox в соответствии с итогами проведения сериализации
+                if (editResult.Item1)
+                {
+                    //Меняем значение ячейки количетсво в dataGridView_Consists
+                    dataGridView_Consists.CurrentCell.Value = moduleCfg;
+                    GetOkMessage(editResult.Item2);
+                }
+                else
+                {
+                    GetErrorMessage(editResult.Item2);
+                }
+
             }
         }
 

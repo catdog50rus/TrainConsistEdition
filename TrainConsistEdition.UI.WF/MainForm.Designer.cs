@@ -191,7 +191,7 @@
             this.dataGridView_Consists.ShowEditingIcon = false;
             this.dataGridView_Consists.Size = new System.Drawing.Size(338, 138);
             this.dataGridView_Consists.TabIndex = 22;
-            this.dataGridView_Consists.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_Consists_CellEndEdit);
+            this.dataGridView_Consists.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_Consists_CellAndEdit);
             // 
             // button_DeleteVehecle
             // 
@@ -677,7 +677,6 @@
             // Column_Coeff
             // 
             this.Column_Coeff.HeaderText = "Загрузка";
-            this.Column_Coeff.MaxInputLength = 1;
             this.Column_Coeff.Name = "Column_Coeff";
             this.Column_Coeff.Width = 80;
             // 

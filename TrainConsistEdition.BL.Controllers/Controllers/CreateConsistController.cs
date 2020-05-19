@@ -125,7 +125,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// </summary>
         /// <param name="index">Индекс редактируемой единицы</param>
         /// <param name="value">Количество</param>
-        public (bool,string) EditTrainVehicleCount(int index, int value)
+        public (bool,string) EditTrainVehicle(int index, int value)
         {
             if(index < listVehicles.Count && index >= 0)
             {
@@ -144,7 +144,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// </summary>
         /// <param name="index">Индекс редактируемой единицы</param>
         /// <param name="value">Коэффициент загрузки вагона</param>
-        public (bool, string) EditTrainVehicleCount(int index, double value)
+        public (bool, string) EditTrainVehicle(int index, double value)
         {
             if (index < listVehicles.Count && index >= 0)
             {
@@ -155,6 +155,25 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
             else
             {
                 return (false, "Не удалось отредоктировать состав!");
+            }
+        }
+
+        /// <summary>
+        /// Метод редактирования количества единицы подвижного состава
+        /// </summary>
+        /// <param name="index">Индекс редактируемой единицы</param>
+        /// <param name="module">Коэффициент загрузки вагона</param>
+        public (bool, string) EditTrainVehicle(int index, string module, string moduleCfg)
+        {
+            if (index < listVehicles.Count && index >= 0)
+            {
+                listVehicles[index].Module = module;
+                listVehicles[index].ModuleConfig = moduleCfg;
+                return (true, "Состав успешно изменен!");
+            }
+            else
+            {
+                return (false, "Не удалось изменить состав!");
             }
         }
 

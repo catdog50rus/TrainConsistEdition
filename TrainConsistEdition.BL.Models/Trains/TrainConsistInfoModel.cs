@@ -38,7 +38,7 @@ namespace TrainConsistEdition.BL.Models.Trains
         /// <summary>
         /// Флаг наличия / отсутствия воздуха в локомотиве.
         /// </summary>
-        public bool NoAir { get; set; }
+        public int NoAir { get; set; }
         
         /// <summary>
         /// Наименование поезда, отображается в игровом клиенте

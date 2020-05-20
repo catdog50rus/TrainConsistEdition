@@ -16,11 +16,16 @@ namespace TrainConsistEdition.UI.WF
     public partial class MainForm : Form
     {
         /// <summary>
-        /// Объявляем модель основного контроллера
+        /// Объявляем основной контроллер
         /// </summary>
         private CreateConsistController createController;
+        /// <summary>
+        /// Объявляем контроллер сериализации
+        /// </summary>
         private SerializeController serializeController;
-        
+        /// <summary>
+        /// Объявляем путь к игре RRS
+        /// </summary>
         private string pathRRS;
 
         /// <summary>
@@ -41,8 +46,11 @@ namespace TrainConsistEdition.UI.WF
         /// </summary>
         private void MenuItem_CreateNewConsist_Click(object sender, EventArgs e)
         {
+            //Очищаем форму
             Clear();
+            //Создаем контроллер
             createController = new CreateConsistController();
+            //Включаем отображение элеметов формы
             panel_Main.Visible = true;
         }
         /// <summary>
@@ -50,43 +58,38 @@ namespace TrainConsistEdition.UI.WF
         /// </summary>
         private void MenuItem_OpenConsist_Click(object sender, EventArgs e)
         {
+            //Очищаем форму
             Clear();
+            //Открываем стандартный диалог Win, начальная директория с составами в RRS, фильтр файловпо расширению xml
             var openDialog = new OpenFileDialog
             {
-                InitialDirectory = pathRRS
+                InitialDirectory = pathRRS,
+                Filter = "xml файлы (*.xml)|*.xml"
             };
 
-            if (openDialog.ShowDialog() == DialogResult.OK)
+            if (openDialog.ShowDialog() == DialogResult.OK)//Если пользователь выбрал файл
             {
+                //Получаем полный путь к файлу
                 var filename = openDialog.FileName;
+                //Создаем контроллер сериализации и передаем в него путь к файлу
                 serializeController = new SerializeController(filename);
 
-
+                //Вызываем метод десериализации и получаем результат в кортеж(Модель, Результат действия (да\нет), Сообщение)
                 var serializeResult = serializeController.OpenConsist();
-                if (serializeResult.Item2)
+                if (serializeResult.Item2)//Если удачно
                 {
-                    createController = new CreateConsistController(serializeResult.Item1);
-                    SetOpenConsistOnDataGrid(serializeResult.Item1);
-                    textBox_FileName.Text = GetListBoxElement(new DirectoryInfo(filename).Name).ToLower();
-                    panel_Main.Visible = true;
+                    createController = new CreateConsistController(serializeResult.Item1); //Создаем контроллер и передаем в его модель
+                    SetOpenConsistOnDataGrid(serializeResult.Item1); //Передаем в DataGrid модель
+                    panel_Main.Visible = true; //Отображаем элементы формы
                 }
-                else
+                else //При неудаче
                 {
+                    //Выводим сообщение об ошибке
                     GetErrorMessage(serializeResult.Item3);
+                    //Элементы формы не отображаются
                     panel_Main.Visible = false;
                 }
-
-
-
-
             }
-
-        }
-        /// <summary>
-        /// Обработчик выбора Сохранить состав как
-        /// </summary>
-        private void MenuItem_SaveAs_Click(object sender, EventArgs e)
-        {
 
         }
         /// <summary>
@@ -96,21 +99,6 @@ namespace TrainConsistEdition.UI.WF
         {
             //Вызываем метод получения пути к игре и записи его в файл настроек
             SaveSettings();
-        }
-        /// <summary>
-        /// Обработчик выбора Выход
-        /// </summary>
-        private void MenuItem_Exit_Click(object sender, EventArgs e)
-        {
-            if(createController != null)
-            {
-                DialogResult result = MessageBox.Show("Вся не сохраненная работа будет утеряна!\r\n Вы желаете выйти из приложения?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                if(result == DialogResult.Yes)
-                {
-                    this.Close();
-                }
-            }
-            
         }
             
 
@@ -128,17 +116,14 @@ namespace TrainConsistEdition.UI.WF
             var validSelected = listBox_Loco.SelectedItem == null ? false : true;
             if (validSelected)
             {
-                //Получаем значения параметров
-                var module = listBox_Loco.SelectedItem.ToString();
-                var moduleCfg = listBox_Loco.SelectedItem.ToString();
-                int locoCount = (int.TryParse(textBox_LocoCount.Text, out int count) && count != 0) ? count : 1;
-                var payloadCoeff = 1.0;
+                //Получаем параметры локомотива
+                var loco = GetLoco();
 
                 //Передаем параметры в контроллер дл инициализации модели
-                createController.AddTrainVehicle(module, moduleCfg, locoCount, payloadCoeff);
+                createController.AddTrainVehicle(loco.Item1, loco.Item2, loco.Item3, loco.Item4);
                 //Вызываем вспомогательный метод управления dataGridView_Consists и кнопками
-                SetDataGrid(moduleCfg, locoCount, payloadCoeff);
-                listBox_Loco.ClearSelected();
+                SetDataGrid(loco.Item2, loco.Item3, loco.Item4);
+                
 
             }
             else
@@ -158,17 +143,13 @@ namespace TrainConsistEdition.UI.WF
             var validSelected = listBox_VagonName.SelectedItem == null ? false : true;
             if (validSelected)
             {
-                //Получаем значения параметров
-                var module = "passcar";
-                var moduleCfg = listBox_VagonName.SelectedItem.ToString();
-                int vagonCount = (int.TryParse(textBox_VagonCount.Text, out int count) && count != 0)? count : 1;
-                var payloadCoeff = (double.TryParse(textBox_Coeff.Text, out double coeff) && coeff <= 1.0 && coeff >= 0) ? coeff : 1.0;
-
+                //Получаем данные из элементов формы
+                var vagon = GetVagon();
                 //Передаем параметры в контроллер дл инициализации модели
-                createController.AddTrainVehicle(module, moduleCfg, vagonCount, payloadCoeff);
+                createController.AddTrainVehicle(vagon.Item1, vagon.Item2, vagon.Item3, vagon.Item4);
                 //Добавлям выбранный локомотив в dataGridView_Consists
-                SetDataGrid(moduleCfg, vagonCount, payloadCoeff);
-                listBox_VagonName.ClearSelected();
+                SetDataGrid(vagon.Item2, vagon.Item3, vagon.Item4);
+                
             }
             else
             {
@@ -179,26 +160,28 @@ namespace TrainConsistEdition.UI.WF
         }
 
         /// <summary>
-        /// Обработчик нажатия на кнопку "Готово"
+        /// Обработчик нажатия на кнопку "Сохранить состав"
         /// </summary>
         private void Button_Serialize_Click(object sender, EventArgs e)
         {
-            //Вызываем метод, создающий свойства и характеристики поезда
+            //Вызываем метод сохранения характеристик и описания поезда
             CreateConsistOption();
 
-            //Открываем диалогоое окно записи файла
+            //Открываем диалогоое окно записи файла.
+            //Начальнаядиректория с составами в RRS
+            //Фильтр файлов .xml
             var saveDialog = new SaveFileDialog()
             {
                 InitialDirectory = pathRRS,
                 Filter = "xml файлы (*.xml)|*.xml"
             };
-            if (saveDialog.ShowDialog() == DialogResult.OK)
+            if (saveDialog.ShowDialog() == DialogResult.OK) //Если пользователь выбрал файл сохранения
             {
-                //Получаем имя итогового файла
+                //Получаем полный путь к итоговому файлу
                 var file = saveDialog.FileName;
-                //Создаем контроллер сериализации и передаем ему основной контроллер и имя итогового файла
+                //Создаем контроллер сериализации и передаем ему основной контроллер и итоговый файл
                 var serialaze = new SerializeController(createController, file);
-                //Сериализируем итоговый поезд в XML файл и передаем результат выполнения в MessageBox
+                //Сериализируем итоговый поезд в XML файл, получаем кореж (результат выполнения и текст сообщения), все передаем в MessageBox
                 var serializeResult = serialaze.SerializeConsist();
                 if (serializeResult.Item1)
                 {
@@ -225,56 +208,73 @@ namespace TrainConsistEdition.UI.WF
 
                 //Получаем индекс выбранной пользователем единицы подвижного состава
                 var selectedVagon = dataGridView_Consists.CurrentCell.RowIndex;
-                //Вызываем метод удаления единицы подвижного состава из списка модели
-                GetMessage(createController.RemoveTrainVehicle(selectedVagon));
-
-                //Удаляем выбранную единицу подвижного состава из dataGridView_Consists
-                dataGridView_Consists.Rows.RemoveAt(dataGridView_Consists.CurrentCell.RowIndex);
-                //В случае, если в dataGridView_Consists нет больше данных блокируем кнопки "Отцепить" и "Готово!"
-                button_DeleteVehecle.Enabled = dataGridView_Consists.Rows[0].IsNewRow ? false : true;
-                button_Serialize.Enabled = dataGridView_Consists.Rows[0].IsNewRow ? false : true;
-                groupBox_Consist.Enabled = dataGridView_Consists.Rows[0].IsNewRow ? false : true;
-                //Локальная функция, вызывающая MessageBox в соответствии с итогами проведения вызова
-                void GetMessage(bool result)
+                //Вызываем метод удаления единицы подвижного состава из списка модели и получаем кортеж(Результат удаления, текст сообщения)
+                var removeResult = createController.RemoveTrainVehicle(selectedVagon);
+                if (removeResult.Item1) //Если успещшно
                 {
-                    if (result)
-                    {
-                        GetOkMessage("Состав успешно отредактирован!");
-                    }
-                    else
-                    {
-                        GetErrorMessage("Не удалось отредоктировать состав!");
-                    }
+                    //Удаляем выбранную единицу подвижного состава из dataGridView_Consists
+                    dataGridView_Consists.Rows.RemoveAt(dataGridView_Consists.CurrentCell.RowIndex);
+                    //В случае, если в dataGridView_Consists нет больше данных блокируем кнопки "Отцепить" и "Готово!"
+                    button_DeleteVehecle.Enabled = dataGridView_Consists.Rows[0].IsNewRow ? false : true;
+                    button_Serialize.Enabled = dataGridView_Consists.Rows[0].IsNewRow ? false : true;
+                    groupBox_Consist.Enabled = dataGridView_Consists.Rows[0].IsNewRow ? false : true;
+                    //Отображаем сообщение
+                    GetOkMessage(removeResult.Item2);
+                }
+                else
+                {
+                    GetErrorMessage(removeResult.Item2);
                 }
             }
         }
 
+        /// <summary>
+        /// Метод обработки нажатия кнопки "Заменить"
+        /// Метод позволяет заменить выбранный в DataGrid вагон или локомотив целиком
+        /// </summary>
         private void Button_Change_Click(object sender, EventArgs e)
         {
+            //Объявляем лоальные переменные
             string module = "";
             string moduleCfg = "";
             
-            if(listBox_Loco.SelectedItems.Count != 0)
+            if(listBox_Loco.SelectedItems.Count != 0)//Присваеваем пременным значения, если выбран локомотив
             {
-                module = listBox_Loco.SelectedItem.ToString();
-                moduleCfg = listBox_Loco.SelectedItem.ToString();
-
+                var loco = GetLoco();
+                module = loco.Item1;
+                moduleCfg = loco.Item2;
             }
-            if(listBox_VagonName.SelectedItems.Count != 0)
+            if(listBox_VagonName.SelectedItems.Count != 0)//Присваеваем пременным значения, если выбран вагон
             {
-                module = "passcar";
-                moduleCfg = listBox_VagonName.SelectedItem.ToString();
+                var vagon = GetVagon();
+                module = vagon.Item1;
+                moduleCfg = vagon.Item2;
             }
-
+            
+            //Передаем в DataGrid новые значения
             DataGridView_Consists_ChangeVehicle(module, moduleCfg);
         }
 
+        /// <summary>
+        /// Обработчик нажатия кнопки "Очистить"
+        /// </summary>
         private void Button_Clear_Click(object sender, EventArgs e)
         {
+            //Вызываем метод очистки элементов формы
             Clear();
         }
 
-
+        /// <summary>
+        /// Обработчик нажатия "Крестика" на форме
+        /// </summary>
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Вызываем окно подтверждения выхода
+            if (MessageBox.Show("Вся не сохраненная работа будет утеряна!\r\n Вы желаете выйти из приложения?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.No)
+                e.Cancel = true;
+            else
+                e.Cancel = false;
+        }
 
 
         #endregion
@@ -321,7 +321,7 @@ namespace TrainConsistEdition.UI.WF
             }
             else //Иначе просим пользователя указать каталог с игрой
             {
-                GetOkMessage("Для начала работы приложения в меню укажите каталог с установленным RRS");
+                GetOkMessage("Для начала работы приложения, пожалуйста, укажите в меню каталог с установленным RRS");
             }
 
         }
@@ -361,6 +361,45 @@ namespace TrainConsistEdition.UI.WF
         }
 
         /// <summary>
+        /// Метод для получения Данных локомотива из элементов формы
+        /// </summary>
+        /// <returns>Возвращает кортеж </returns>
+        private (string, string, int, double) GetLoco()
+        {
+            //Получаем значения параметров
+            //Для параметра Module необходимо обрезать номер локомотива. если есть
+            //Находим позицию начала номера
+            int pos = listBox_Loco.SelectedItem.ToString().LastIndexOf('-');
+            //Если номер отсутствует позиция равна длине строки имеется обрезаем его
+            if (pos == -1) pos = listBox_Loco.SelectedItem.ToString().Length;
+            //Получаем значение с учетом обрезки номера
+            string module = listBox_Loco.SelectedItem.ToString().Substring(0, pos);
+            string moduleCfg = listBox_Loco.SelectedItem.ToString();
+            int locoCount = (int.TryParse(textBox_LocoCount.Text, out int count) && count != 0) ? count : 1;
+            double payloadCoeff = 1.0;
+            //Убираем маркер выделения
+            listBox_Loco.ClearSelected();
+            return (module, moduleCfg, locoCount, payloadCoeff);
+
+        }
+
+        /// <summary>
+        /// Метод для получения данных вагона из элементов формы
+        /// </summary>
+        /// <returns>Возвращает кортеж </returns>
+        private (string, string, int, double) GetVagon()
+        {
+            //Получаем значения параметров
+            var module = "passcar";
+            var moduleCfg = listBox_VagonName.SelectedItem.ToString();
+            int vagonCount = (int.TryParse(textBox_VagonCount.Text, out int count) && count != 0) ? count : 1;
+            var payloadCoeff = (double.TryParse(textBox_Coeff.Text, out double coeff) && coeff <= 1.0 && coeff >= 0) ? coeff : 1.0;
+            //Убираем маркер выделения
+            listBox_VagonName.ClearSelected();
+            return (module, moduleCfg, vagonCount, payloadCoeff);
+        }
+
+        /// <summary>
         /// Метод передает в модель свойст и характеристик поезда данные введенные пользователем
         /// </summary>
         private void CreateConsistOption()
@@ -376,7 +415,7 @@ namespace TrainConsistEdition.UI.WF
             var cabine = textBox_CabineInVehicle.Text == "" ? 0 : int.Parse(textBox_CabineInVehicle.Text);
             var charginPress = textBox_ChargingPressure.Text == "" ? 0.5 : double.Parse(textBox_ChargingPressure.Text);
             var initPress = textBox_InitMainResPressure.Text == "" ? 0.9 : double.Parse(textBox_InitMainResPressure.Text);
-            var noAir = checkBox_NoAir.Checked;
+            var noAir = checkBox_NoAir.Checked ? 1 : 0;
 
             //Передаем в контроллер данные пользователя
             createController.AddConsistOptions(title, descr, coupType, cabine, charginPress, initPress, noAir);
@@ -389,7 +428,7 @@ namespace TrainConsistEdition.UI.WF
         /// <param name="item">элемент коллекции имен файлов</param>
         private string GetListBoxElement(string item)
         {
-            return item.TrimEnd('.', 'x', 'm', 'l').ToUpper();
+            return item.TrimEnd('.', 'x', 'm', 'l');
         }
 
         /// <summary>
@@ -409,10 +448,13 @@ namespace TrainConsistEdition.UI.WF
             }
         }
 
+        /// <summary>
+        /// Метод очищает форму и зануляет контроллер
+        /// Блокирует кнопки управления
+        /// </summary>
         private void Clear()
         {
             createController = null;
-            textBox_FileName.Clear();
             textBox_ConsistName.Clear();
             textBox_Description.Clear();
             dataGridView_Consists.Rows.Clear();
@@ -540,6 +582,9 @@ namespace TrainConsistEdition.UI.WF
             }
         }
 
+        /// <summary>
+        /// Обаботчик замены локомотива или вагона в DataGridView_Consists
+        /// </summary>
         private void DataGridView_Consists_ChangeVehicle(string module, string moduleCfg)
         {
             //Проверяем есть ли данные в dataGridView_Consists
@@ -586,13 +631,20 @@ namespace TrainConsistEdition.UI.WF
             textBox_CabineInVehicle.Text = model.Common.CabineInVehicle.ToString();
             textBox_ChargingPressure.Text = model.Common.ChargingPressure.ToString();
             textBox_InitMainResPressure.Text = model.Common.InitMainResPressure.ToString();
-            checkBox_NoAir.Checked = model.Common.NoAir;
+            if(model.Common.NoAir == 0 || model.Common.NoAir == 1)
+            {
+                checkBox_NoAir.Checked = model.Common.NoAir == 0 ? false : true;
+            }
+            else
+            {
+                checkBox_NoAir.Checked = false;
+            }
+            
             listBox_CouplingType.SelectedItem = model.Common.CouplingModule;
 
             
         }
 
         #endregion
-
     }
 }

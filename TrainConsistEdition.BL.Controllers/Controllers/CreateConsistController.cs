@@ -61,7 +61,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
                                       int cabinInVehicle, 
                                       double chargingPressure,
                                       double intMainResPressure, 
-                                      bool noAir)
+                                      int noAir)
         {
             //Добавляем данные поезда в модель
             consistInfoModel.Title = title;
@@ -106,16 +106,16 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// Метод удаления единицы подвижного состава из поезда
         /// </summary>
         /// <param name="index">Индекс удаляемой единицы</param>
-        public bool RemoveTrainVehicle(int index)
+        public (bool, string) RemoveTrainVehicle(int index)
         {
             try
             {
                 listVehicles.RemoveAt(index);
-                return true;
+                return (true, "Состав успешно отредактирован!");
             }
             catch (Exception)
             {
-                return false;
+                return (false, "Не удалось отредоктировать состав!");
             }
             
         }

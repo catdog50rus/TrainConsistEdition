@@ -42,7 +42,7 @@
             this.groupBox_vehcle = new System.Windows.Forms.GroupBox();
             this.textBox_Coeff = new System.Windows.Forms.TextBox();
             this.button_AddVagon = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_LoaderCoeff = new System.Windows.Forms.Label();
             this.listBox_VagonName = new System.Windows.Forms.ListBox();
             this.textBox_VagonCount = new System.Windows.Forms.TextBox();
             this.label_VagonCount = new System.Windows.Forms.Label();
@@ -73,8 +73,6 @@
             this.textBox_InitMainResPressure = new System.Windows.Forms.TextBox();
             this.checkBox_TrainOptions = new System.Windows.Forms.CheckBox();
             this.label_TrainOptionsHide = new System.Windows.Forms.Label();
-            this.textBox_FileName = new System.Windows.Forms.TextBox();
-            this.label_FileName = new System.Windows.Forms.Label();
             this.label_ConsistOptions = new System.Windows.Forms.Label();
             this.button_Serialize = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -83,7 +81,6 @@
             this.MenuItem_CreateNewConsist = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_OpenConsist = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_SetFolders = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.panel_Main.SuspendLayout();
@@ -125,7 +122,7 @@
             this.button_Clear.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button_Clear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Clear.Location = new System.Drawing.Point(578, 584);
+            this.button_Clear.Location = new System.Drawing.Point(591, 591);
             this.button_Clear.Name = "button_Clear";
             this.button_Clear.Size = new System.Drawing.Size(165, 39);
             this.button_Clear.TabIndex = 22;
@@ -141,10 +138,10 @@
             this.panel_Consist.Controls.Add(this.groupBox_vehcle);
             this.panel_Consist.Controls.Add(this.label_ConsistEdition);
             this.panel_Consist.Controls.Add(this.groupBox_Loco);
-            this.panel_Consist.Location = new System.Drawing.Point(7, 289);
+            this.panel_Consist.Location = new System.Drawing.Point(7, 284);
             this.panel_Consist.MinimumSize = new System.Drawing.Size(1070, 275);
             this.panel_Consist.Name = "panel_Consist";
-            this.panel_Consist.Size = new System.Drawing.Size(1070, 275);
+            this.panel_Consist.Size = new System.Drawing.Size(1070, 295);
             this.panel_Consist.TabIndex = 2;
             // 
             // groupBox_Consist
@@ -153,10 +150,10 @@
             this.groupBox_Consist.Controls.Add(this.dataGridView_Consists);
             this.groupBox_Consist.Controls.Add(this.button_DeleteVehecle);
             this.groupBox_Consist.Enabled = false;
-            this.groupBox_Consist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox_Consist.Location = new System.Drawing.Point(717, 34);
+            this.groupBox_Consist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox_Consist.Location = new System.Drawing.Point(717, 37);
             this.groupBox_Consist.Name = "groupBox_Consist";
-            this.groupBox_Consist.Size = new System.Drawing.Size(346, 227);
+            this.groupBox_Consist.Size = new System.Drawing.Size(346, 251);
             this.groupBox_Consist.TabIndex = 24;
             this.groupBox_Consist.TabStop = false;
             this.groupBox_Consist.Text = "Состав поезда";
@@ -166,8 +163,8 @@
             this.button_Change.BackColor = System.Drawing.Color.Goldenrod;
             this.button_Change.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_Change.Enabled = false;
-            this.button_Change.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Change.Location = new System.Drawing.Point(20, 176);
+            this.button_Change.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_Change.Location = new System.Drawing.Point(20, 206);
             this.button_Change.Name = "button_Change";
             this.button_Change.Size = new System.Drawing.Size(137, 39);
             this.button_Change.TabIndex = 24;
@@ -184,6 +181,7 @@
             this.Column_Name,
             this.Column_Count,
             this.Column_Coeff});
+            this.dataGridView_Consists.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dataGridView_Consists.Location = new System.Drawing.Point(6, 19);
             this.dataGridView_Consists.Name = "dataGridView_Consists";
             this.dataGridView_Consists.RowHeadersVisible = false;
@@ -217,8 +215,8 @@
             this.button_DeleteVehecle.BackColor = System.Drawing.Color.LightCoral;
             this.button_DeleteVehecle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_DeleteVehecle.Enabled = false;
-            this.button_DeleteVehecle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_DeleteVehecle.Location = new System.Drawing.Point(188, 176);
+            this.button_DeleteVehecle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_DeleteVehecle.Location = new System.Drawing.Point(188, 206);
             this.button_DeleteVehecle.Name = "button_DeleteVehecle";
             this.button_DeleteVehecle.Size = new System.Drawing.Size(137, 39);
             this.button_DeleteVehecle.TabIndex = 23;
@@ -232,33 +230,34 @@
             this.groupBox_vehcle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.groupBox_vehcle.Controls.Add(this.textBox_Coeff);
             this.groupBox_vehcle.Controls.Add(this.button_AddVagon);
-            this.groupBox_vehcle.Controls.Add(this.label1);
+            this.groupBox_vehcle.Controls.Add(this.label_LoaderCoeff);
             this.groupBox_vehcle.Controls.Add(this.listBox_VagonName);
             this.groupBox_vehcle.Controls.Add(this.textBox_VagonCount);
             this.groupBox_vehcle.Controls.Add(this.label_VagonCount);
             this.groupBox_vehcle.Controls.Add(this.label_VagonName);
             this.groupBox_vehcle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox_vehcle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox_vehcle.Location = new System.Drawing.Point(335, 34);
+            this.groupBox_vehcle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox_vehcle.Location = new System.Drawing.Point(335, 37);
             this.groupBox_vehcle.Name = "groupBox_vehcle";
-            this.groupBox_vehcle.Size = new System.Drawing.Size(376, 227);
+            this.groupBox_vehcle.Size = new System.Drawing.Size(376, 251);
             this.groupBox_vehcle.TabIndex = 19;
             this.groupBox_vehcle.TabStop = false;
             this.groupBox_vehcle.Text = "Вагоны";
             // 
             // textBox_Coeff
             // 
-            this.textBox_Coeff.Location = new System.Drawing.Point(247, 130);
+            this.textBox_Coeff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_Coeff.Location = new System.Drawing.Point(304, 178);
             this.textBox_Coeff.Name = "textBox_Coeff";
-            this.textBox_Coeff.Size = new System.Drawing.Size(49, 21);
+            this.textBox_Coeff.Size = new System.Drawing.Size(49, 22);
             this.textBox_Coeff.TabIndex = 5;
             // 
             // button_AddVagon
             // 
             this.button_AddVagon.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.button_AddVagon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_AddVagon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_AddVagon.Location = new System.Drawing.Point(115, 176);
+            this.button_AddVagon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_AddVagon.Location = new System.Drawing.Point(115, 206);
             this.button_AddVagon.Name = "button_AddVagon";
             this.button_AddVagon.Size = new System.Drawing.Size(160, 39);
             this.button_AddVagon.TabIndex = 22;
@@ -266,55 +265,61 @@
             this.button_AddVagon.UseVisualStyleBackColor = false;
             this.button_AddVagon.Click += new System.EventHandler(this.Button_AddVagon_Click);
             // 
-            // label1
+            // label_LoaderCoeff
             // 
-            this.label1.Location = new System.Drawing.Point(6, 133);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(227, 29);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Загруженность вагона (по умолчанию 1)";
+            this.label_LoaderCoeff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_LoaderCoeff.Location = new System.Drawing.Point(6, 181);
+            this.label_LoaderCoeff.Name = "label_LoaderCoeff";
+            this.label_LoaderCoeff.Size = new System.Drawing.Size(292, 19);
+            this.label_LoaderCoeff.TabIndex = 4;
+            this.label_LoaderCoeff.Text = "Загруженность вагона (по умолчанию 1)";
             // 
             // listBox_VagonName
             // 
+            this.listBox_VagonName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBox_VagonName.FormattingEnabled = true;
             this.listBox_VagonName.ItemHeight = 15;
-            this.listBox_VagonName.Location = new System.Drawing.Point(150, 19);
+            this.listBox_VagonName.Location = new System.Drawing.Point(168, 19);
             this.listBox_VagonName.Name = "listBox_VagonName";
-            this.listBox_VagonName.Size = new System.Drawing.Size(220, 64);
+            this.listBox_VagonName.Size = new System.Drawing.Size(202, 124);
             this.listBox_VagonName.TabIndex = 3;
             this.listBox_VagonName.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListBox_VagonName_MouseDoubleClick);
             // 
             // textBox_VagonCount
             // 
-            this.textBox_VagonCount.Location = new System.Drawing.Point(247, 99);
+            this.textBox_VagonCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_VagonCount.Location = new System.Drawing.Point(304, 149);
             this.textBox_VagonCount.Name = "textBox_VagonCount";
-            this.textBox_VagonCount.Size = new System.Drawing.Size(49, 21);
+            this.textBox_VagonCount.Size = new System.Drawing.Size(49, 22);
             this.textBox_VagonCount.TabIndex = 2;
             // 
             // label_VagonCount
             // 
             this.label_VagonCount.AutoSize = true;
-            this.label_VagonCount.Location = new System.Drawing.Point(6, 102);
+            this.label_VagonCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_VagonCount.Location = new System.Drawing.Point(6, 152);
             this.label_VagonCount.Name = "label_VagonCount";
-            this.label_VagonCount.Size = new System.Drawing.Size(126, 15);
+            this.label_VagonCount.Size = new System.Drawing.Size(143, 16);
             this.label_VagonCount.TabIndex = 1;
             this.label_VagonCount.Text = "Количество вагонов";
             // 
             // label_VagonName
             // 
             this.label_VagonName.AutoSize = true;
+            this.label_VagonName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_VagonName.Location = new System.Drawing.Point(6, 28);
             this.label_VagonName.Name = "label_VagonName";
-            this.label_VagonName.Size = new System.Drawing.Size(138, 15);
+            this.label_VagonName.Size = new System.Drawing.Size(156, 16);
             this.label_VagonName.TabIndex = 0;
             this.label_VagonName.Text = "Наименование вагона";
             // 
             // label_ConsistEdition
             // 
             this.label_ConsistEdition.AutoSize = true;
-            this.label_ConsistEdition.Location = new System.Drawing.Point(400, 18);
+            this.label_ConsistEdition.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_ConsistEdition.Location = new System.Drawing.Point(470, 10);
             this.label_ConsistEdition.Name = "label_ConsistEdition";
-            this.label_ConsistEdition.Size = new System.Drawing.Size(82, 13);
+            this.label_ConsistEdition.Size = new System.Drawing.Size(119, 16);
             this.label_ConsistEdition.TabIndex = 17;
             this.label_ConsistEdition.Text = "Состав поезда";
             // 
@@ -326,37 +331,40 @@
             this.groupBox_Loco.Controls.Add(this.button_AddLoco);
             this.groupBox_Loco.Controls.Add(this.label_LocoName);
             this.groupBox_Loco.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox_Loco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox_Loco.Location = new System.Drawing.Point(10, 34);
+            this.groupBox_Loco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox_Loco.Location = new System.Drawing.Point(10, 37);
             this.groupBox_Loco.Name = "groupBox_Loco";
-            this.groupBox_Loco.Size = new System.Drawing.Size(319, 227);
+            this.groupBox_Loco.Size = new System.Drawing.Size(319, 251);
             this.groupBox_Loco.TabIndex = 18;
             this.groupBox_Loco.TabStop = false;
             this.groupBox_Loco.Text = "Локомотив";
             // 
             // listBox_Loco
             // 
+            this.listBox_Loco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBox_Loco.FormattingEnabled = true;
             this.listBox_Loco.ItemHeight = 15;
-            this.listBox_Loco.Location = new System.Drawing.Point(183, 19);
+            this.listBox_Loco.Location = new System.Drawing.Point(193, 19);
             this.listBox_Loco.Name = "listBox_Loco";
-            this.listBox_Loco.Size = new System.Drawing.Size(120, 64);
+            this.listBox_Loco.Size = new System.Drawing.Size(120, 124);
             this.listBox_Loco.TabIndex = 3;
             this.listBox_Loco.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListBox_Loco_MouseClick);
             // 
             // textBox_LocoCount
             // 
-            this.textBox_LocoCount.Location = new System.Drawing.Point(183, 99);
+            this.textBox_LocoCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_LocoCount.Location = new System.Drawing.Point(193, 149);
             this.textBox_LocoCount.Name = "textBox_LocoCount";
-            this.textBox_LocoCount.Size = new System.Drawing.Size(49, 21);
+            this.textBox_LocoCount.Size = new System.Drawing.Size(49, 22);
             this.textBox_LocoCount.TabIndex = 2;
             // 
             // label_LocoCount
             // 
             this.label_LocoCount.AutoSize = true;
-            this.label_LocoCount.Location = new System.Drawing.Point(6, 102);
+            this.label_LocoCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_LocoCount.Location = new System.Drawing.Point(-2, 152);
             this.label_LocoCount.Name = "label_LocoCount";
-            this.label_LocoCount.Size = new System.Drawing.Size(157, 15);
+            this.label_LocoCount.Size = new System.Drawing.Size(176, 16);
             this.label_LocoCount.TabIndex = 1;
             this.label_LocoCount.Text = "Количество локомотивов";
             // 
@@ -364,10 +372,10 @@
             // 
             this.button_AddLoco.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.button_AddLoco.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_AddLoco.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_AddLoco.Location = new System.Drawing.Point(72, 176);
+            this.button_AddLoco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_AddLoco.Location = new System.Drawing.Point(71, 206);
             this.button_AddLoco.Name = "button_AddLoco";
-            this.button_AddLoco.Size = new System.Drawing.Size(160, 39);
+            this.button_AddLoco.Size = new System.Drawing.Size(171, 39);
             this.button_AddLoco.TabIndex = 19;
             this.button_AddLoco.Text = "Добавить локомотив";
             this.button_AddLoco.UseVisualStyleBackColor = false;
@@ -376,9 +384,10 @@
             // label_LocoName
             // 
             this.label_LocoName.AutoSize = true;
-            this.label_LocoName.Location = new System.Drawing.Point(6, 28);
+            this.label_LocoName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_LocoName.Location = new System.Drawing.Point(-2, 28);
             this.label_LocoName.Name = "label_LocoName";
-            this.label_LocoName.Size = new System.Drawing.Size(169, 15);
+            this.label_LocoName.Size = new System.Drawing.Size(189, 16);
             this.label_LocoName.TabIndex = 0;
             this.label_LocoName.Text = "Наименование локомотива";
             // 
@@ -390,13 +399,11 @@
             this.panel_Options.Controls.Add(this.groupBox_TrainOptons);
             this.panel_Options.Controls.Add(this.checkBox_TrainOptions);
             this.panel_Options.Controls.Add(this.label_TrainOptionsHide);
-            this.panel_Options.Controls.Add(this.textBox_FileName);
-            this.panel_Options.Controls.Add(this.label_FileName);
             this.panel_Options.Controls.Add(this.label_ConsistOptions);
             this.panel_Options.Location = new System.Drawing.Point(7, 3);
             this.panel_Options.MinimumSize = new System.Drawing.Size(970, 275);
             this.panel_Options.Name = "panel_Options";
-            this.panel_Options.Size = new System.Drawing.Size(1070, 280);
+            this.panel_Options.Size = new System.Drawing.Size(1070, 275);
             this.panel_Options.TabIndex = 1;
             // 
             // groupBox_Descr
@@ -407,10 +414,10 @@
             this.groupBox_Descr.Controls.Add(this.textBox_ConsistName);
             this.groupBox_Descr.Controls.Add(this.textBox_Description);
             this.groupBox_Descr.Controls.Add(this.textBox_CabineInVehicle);
-            this.groupBox_Descr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox_Descr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox_Descr.Location = new System.Drawing.Point(10, 71);
             this.groupBox_Descr.Name = "groupBox_Descr";
-            this.groupBox_Descr.Size = new System.Drawing.Size(401, 202);
+            this.groupBox_Descr.Size = new System.Drawing.Size(401, 188);
             this.groupBox_Descr.TabIndex = 27;
             this.groupBox_Descr.TabStop = false;
             this.groupBox_Descr.Text = "Описание поезда";
@@ -418,7 +425,8 @@
             // label_CabineInVehicle
             // 
             this.label_CabineInVehicle.AutoSize = true;
-            this.label_CabineInVehicle.Location = new System.Drawing.Point(7, 167);
+            this.label_CabineInVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_CabineInVehicle.Location = new System.Drawing.Point(7, 159);
             this.label_CabineInVehicle.Name = "label_CabineInVehicle";
             this.label_CabineInVehicle.Size = new System.Drawing.Size(299, 16);
             this.label_CabineInVehicle.TabIndex = 6;
@@ -427,6 +435,7 @@
             // label_Description
             // 
             this.label_Description.AutoSize = true;
+            this.label_Description.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_Description.Location = new System.Drawing.Point(7, 70);
             this.label_Description.Name = "label_Description";
             this.label_Description.Size = new System.Drawing.Size(124, 16);
@@ -436,6 +445,7 @@
             // label_Title
             // 
             this.label_Title.AutoSize = true;
+            this.label_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_Title.Location = new System.Drawing.Point(7, 41);
             this.label_Title.Name = "label_Title";
             this.label_Title.Size = new System.Drawing.Size(125, 16);
@@ -444,13 +454,15 @@
             // 
             // textBox_ConsistName
             // 
+            this.textBox_ConsistName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox_ConsistName.Location = new System.Drawing.Point(138, 37);
             this.textBox_ConsistName.Name = "textBox_ConsistName";
-            this.textBox_ConsistName.Size = new System.Drawing.Size(250, 21);
+            this.textBox_ConsistName.Size = new System.Drawing.Size(250, 22);
             this.textBox_ConsistName.TabIndex = 1;
             // 
             // textBox_Description
             // 
+            this.textBox_Description.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox_Description.Location = new System.Drawing.Point(137, 64);
             this.textBox_Description.Multiline = true;
             this.textBox_Description.Name = "textBox_Description";
@@ -460,9 +472,10 @@
             // 
             // textBox_CabineInVehicle
             // 
-            this.textBox_CabineInVehicle.Location = new System.Drawing.Point(316, 167);
+            this.textBox_CabineInVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_CabineInVehicle.Location = new System.Drawing.Point(316, 156);
             this.textBox_CabineInVehicle.Name = "textBox_CabineInVehicle";
-            this.textBox_CabineInVehicle.Size = new System.Drawing.Size(72, 21);
+            this.textBox_CabineInVehicle.Size = new System.Drawing.Size(72, 22);
             this.textBox_CabineInVehicle.TabIndex = 9;
             // 
             // groupBox_TrainOptons
@@ -475,10 +488,10 @@
             this.groupBox_TrainOptons.Controls.Add(this.listBox_CouplingType);
             this.groupBox_TrainOptons.Controls.Add(this.textBox_ChargingPressure);
             this.groupBox_TrainOptons.Controls.Add(this.textBox_InitMainResPressure);
-            this.groupBox_TrainOptons.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox_TrainOptons.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox_TrainOptons.Location = new System.Drawing.Point(418, 71);
             this.groupBox_TrainOptons.Name = "groupBox_TrainOptons";
-            this.groupBox_TrainOptons.Size = new System.Drawing.Size(634, 202);
+            this.groupBox_TrainOptons.Size = new System.Drawing.Size(634, 188);
             this.groupBox_TrainOptons.TabIndex = 26;
             this.groupBox_TrainOptons.TabStop = false;
             this.groupBox_TrainOptons.Text = "Тормозные характеристики";
@@ -486,6 +499,7 @@
             // 
             // label_ChargingPressure
             // 
+            this.label_ChargingPressure.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_ChargingPressure.Location = new System.Drawing.Point(6, 70);
             this.label_ChargingPressure.Name = "label_ChargingPressure";
             this.label_ChargingPressure.Size = new System.Drawing.Size(465, 26);
@@ -494,6 +508,7 @@
             // 
             // label_InitMainResPressure
             // 
+            this.label_InitMainResPressure.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_InitMainResPressure.Location = new System.Drawing.Point(7, 110);
             this.label_InitMainResPressure.Name = "label_InitMainResPressure";
             this.label_InitMainResPressure.Size = new System.Drawing.Size(465, 32);
@@ -511,6 +526,7 @@
             // 
             // label_NoAir
             // 
+            this.label_NoAir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_NoAir.Location = new System.Drawing.Point(7, 34);
             this.label_NoAir.Name = "label_NoAir";
             this.label_NoAir.Size = new System.Drawing.Size(465, 36);
@@ -520,6 +536,7 @@
             // checkBox_NoAir
             // 
             this.checkBox_NoAir.AutoSize = true;
+            this.checkBox_NoAir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.checkBox_NoAir.Location = new System.Drawing.Point(487, 41);
             this.checkBox_NoAir.Name = "checkBox_NoAir";
             this.checkBox_NoAir.Size = new System.Drawing.Size(15, 14);
@@ -528,25 +545,28 @@
             // 
             // listBox_CouplingType
             // 
+            this.listBox_CouplingType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBox_CouplingType.FormattingEnabled = true;
-            this.listBox_CouplingType.ItemHeight = 15;
+            this.listBox_CouplingType.ItemHeight = 16;
             this.listBox_CouplingType.Location = new System.Drawing.Point(484, 139);
             this.listBox_CouplingType.Name = "listBox_CouplingType";
-            this.listBox_CouplingType.Size = new System.Drawing.Size(150, 49);
+            this.listBox_CouplingType.Size = new System.Drawing.Size(150, 36);
             this.listBox_CouplingType.TabIndex = 16;
             // 
             // textBox_ChargingPressure
             // 
+            this.textBox_ChargingPressure.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox_ChargingPressure.Location = new System.Drawing.Point(487, 70);
             this.textBox_ChargingPressure.Name = "textBox_ChargingPressure";
-            this.textBox_ChargingPressure.Size = new System.Drawing.Size(48, 21);
+            this.textBox_ChargingPressure.Size = new System.Drawing.Size(48, 22);
             this.textBox_ChargingPressure.TabIndex = 14;
             // 
             // textBox_InitMainResPressure
             // 
+            this.textBox_InitMainResPressure.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox_InitMainResPressure.Location = new System.Drawing.Point(487, 107);
             this.textBox_InitMainResPressure.Name = "textBox_InitMainResPressure";
-            this.textBox_InitMainResPressure.Size = new System.Drawing.Size(48, 21);
+            this.textBox_InitMainResPressure.Size = new System.Drawing.Size(48, 22);
             this.textBox_InitMainResPressure.TabIndex = 15;
             // 
             // checkBox_TrainOptions
@@ -571,24 +591,6 @@
             this.label_TrainOptionsHide.TabIndex = 24;
             this.label_TrainOptionsHide.Text = "Характеристики поезда по умолчанию";
             // 
-            // textBox_FileName
-            // 
-            this.textBox_FileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_FileName.Location = new System.Drawing.Point(172, 38);
-            this.textBox_FileName.Name = "textBox_FileName";
-            this.textBox_FileName.Size = new System.Drawing.Size(179, 21);
-            this.textBox_FileName.TabIndex = 23;
-            // 
-            // label_FileName
-            // 
-            this.label_FileName.AutoSize = true;
-            this.label_FileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_FileName.Location = new System.Drawing.Point(16, 41);
-            this.label_FileName.Name = "label_FileName";
-            this.label_FileName.Size = new System.Drawing.Size(150, 16);
-            this.label_FileName.TabIndex = 22;
-            this.label_FileName.Text = "Имя итогового файла";
-            // 
             // label_ConsistOptions
             // 
             this.label_ConsistOptions.AutoSize = true;
@@ -608,7 +610,7 @@
             this.button_Serialize.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button_Serialize.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_Serialize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Serialize.Location = new System.Drawing.Point(344, 584);
+            this.button_Serialize.Location = new System.Drawing.Point(344, 591);
             this.button_Serialize.Name = "button_Serialize";
             this.button_Serialize.Size = new System.Drawing.Size(172, 39);
             this.button_Serialize.TabIndex = 21;
@@ -632,8 +634,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItem_CreateNewConsist,
             this.MenuItem_OpenConsist,
-            this.MenuItem_SetFolders,
-            this.MenuItem_Exit});
+            this.MenuItem_SetFolders});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -659,13 +660,6 @@
             this.MenuItem_SetFolders.Text = "Указать расположение папки с игрой RRS";
             this.MenuItem_SetFolders.Click += new System.EventHandler(this.MenuItem_SetFolders_Click);
             // 
-            // MenuItem_Exit
-            // 
-            this.MenuItem_Exit.Name = "MenuItem_Exit";
-            this.MenuItem_Exit.Size = new System.Drawing.Size(304, 22);
-            this.MenuItem_Exit.Text = "Выход";
-            this.MenuItem_Exit.Click += new System.EventHandler(this.MenuItem_Exit_Click);
-            // 
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog";
@@ -684,6 +678,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редоктор составов RRS";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.panel_Main.ResumeLayout(false);
             this.panel_Main.PerformLayout();
             this.panel_Consist.ResumeLayout(false);
@@ -742,9 +737,7 @@
         private System.Windows.Forms.Label label_VagonName;
         private System.Windows.Forms.DataGridView dataGridView_Consists;
         private System.Windows.Forms.Button button_AddVagon;
-        private System.Windows.Forms.TextBox textBox_FileName;
-        private System.Windows.Forms.Label label_FileName;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_LoaderCoeff;
         private System.Windows.Forms.TextBox textBox_Coeff;
         private System.Windows.Forms.GroupBox groupBox_TrainOptons;
         private System.Windows.Forms.CheckBox checkBox_TrainOptions;
@@ -760,7 +753,6 @@
         private System.Windows.Forms.ToolStripMenuItem MenuItem_OpenConsist;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_CreateNewConsist;
-        private System.Windows.Forms.ToolStripMenuItem MenuItem_Exit;
         private System.Windows.Forms.Button button_Change;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_Count;

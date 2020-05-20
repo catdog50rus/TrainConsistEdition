@@ -318,10 +318,15 @@ namespace TrainConsistEdition.UI.WF
                 pathRRS = dirs.Item1;
                 //Вызываем метод применяющий начальные настройки отображения данных в UI
                 InitialListBox(dirs.Item2, dirs.Item3);
+                MenuItem_CreateNewConsist.Enabled = true;
+                MenuItem_OpenConsist.Enabled = true;
+                MenuItem_SetFolders.Enabled = false;
             }
             else //Иначе просим пользователя указать каталог с игрой
             {
                 GetOkMessage("Для начала работы приложения, пожалуйста, укажите в меню каталог с установленным RRS");
+                MenuItem_CreateNewConsist.Enabled = false;
+                MenuItem_OpenConsist.Enabled = false;
             }
 
         }

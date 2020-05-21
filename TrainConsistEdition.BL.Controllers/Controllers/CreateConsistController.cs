@@ -127,8 +127,9 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// <param name="value">Количество</param>
         public (bool,string) EditTrainVehicle(int index, int value)
         {
-            if(index < listVehicles.Count && index >= 0)
+            if(index < listVehicles.Count && index >= 0) //Проверяем, принадлежит ли index диапазону списка
             {
+                // Присваиваем элементу новое значение
                 listVehicles[index].Count = value;
                 
                 return (true, "Состав успешно отредактирован!");
@@ -146,9 +147,9 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// <param name="value">Коэффициент загрузки вагона</param>
         public (bool, string) EditTrainVehicle(int index, double value)
         {
-            if (index < listVehicles.Count && index >= 0)
+            if (index < listVehicles.Count && index >= 0) //Проверяем, принадлежит ли index диапазону списка
             {
-                
+                // Присваиваем элементу новое значение
                 listVehicles[index].PayloadCoeff = value;
                 return (true, "Состав успешно отредактирован!");
             }
@@ -162,11 +163,13 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// Метод редактирования количества единицы подвижного состава
         /// </summary>
         /// <param name="index">Индекс редактируемой единицы</param>
-        /// <param name="module">Коэффициент загрузки вагона</param>
+        /// <param name="module">Имя модуля</param>
+        /// <param name="moduleCfg">имя конфигурации единицы подвижного состава</param>
         public (bool, string) EditTrainVehicle(int index, string module, string moduleCfg)
         {
-            if (index < listVehicles.Count && index >= 0)
+            if (index < listVehicles.Count && index >= 0)//Проверяем, принадлежит ли index диапазону списка
             {
+                // Присваиваем элементам новое значение
                 listVehicles[index].Module = module;
                 listVehicles[index].ModuleConfig = moduleCfg;
                 return (true, "Состав успешно изменен!");

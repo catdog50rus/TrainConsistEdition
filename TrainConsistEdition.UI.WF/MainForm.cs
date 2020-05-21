@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrainConsistEdition.BL.Controllers.Controllers;
 using TrainConsistEdition.BL.Models.Trains;
@@ -26,7 +20,7 @@ namespace TrainConsistEdition.UI.WF
         /// <summary>
         /// Объявляем путь к игре RRS
         /// </summary>
-        private string pathRRS;
+        private string pathTrains;
 
         /// <summary>
         /// Инициализация формы
@@ -63,19 +57,20 @@ namespace TrainConsistEdition.UI.WF
             //Открываем стандартный диалог Win, начальная директория с составами в RRS, фильтр файловпо расширению xml
             var openDialog = new OpenFileDialog
             {
-                InitialDirectory = pathRRS,
+                InitialDirectory = pathTrains,
                 Filter = "xml файлы (*.xml)|*.xml"
             };
 
             if (openDialog.ShowDialog() == DialogResult.OK)//Если пользователь выбрал файл
             {
-                //Получаем полный путь к файлу
-                var filename = openDialog.FileName;
+                var filename = openDialog.FileName; //Получаем полный путь к файлу
+
                 //Создаем контроллер сериализации и передаем в него путь к файлу
                 serializeController = new SerializeController(filename);
 
-                //Вызываем метод десериализации и получаем результат в кортеж(Модель, Результат действия (да\нет), Сообщение)
+                //Вызываем метод десериализации, результат получаем в кортеж(Модель, Результат действия (да\нет), Сообщение)
                 var serializeResult = serializeController.OpenConsist();
+                
                 if (serializeResult.Item2)//Если удачно
                 {
                     createController = new CreateConsistController(serializeResult.Item1); //Создаем контроллер и передаем в его модель
@@ -84,10 +79,8 @@ namespace TrainConsistEdition.UI.WF
                 }
                 else //При неудаче
                 {
-                    //Выводим сообщение об ошибке
-                    GetErrorMessage(serializeResult.Item3);
-                    //Элементы формы не отображаются
-                    panel_Main.Visible = false;
+                    GetErrorMessage(serializeResult.Item3);//Выводим сообщение об ошибке
+                    panel_Main.Visible = false;//Элементы формы не отображаются
                 }
             }
 
@@ -172,7 +165,7 @@ namespace TrainConsistEdition.UI.WF
             //Фильтр файлов .xml
             var saveDialog = new SaveFileDialog()
             {
-                InitialDirectory = pathRRS,
+                InitialDirectory = pathTrains,
                 Filter = "xml файлы (*.xml)|*.xml"
             };
             if (saveDialog.ShowDialog() == DialogResult.OK) //Если пользователь выбрал файл сохранения
@@ -306,25 +299,23 @@ namespace TrainConsistEdition.UI.WF
         private void LoadSettings()
         {
             //Объявляем контроллер управлениян настройками
-            var settingsController = new ApplicationSettingsController();
+            //var settingsController = new ApplicationSettingsController();
             //Пытаемся получить настройки из конфигурационного файла
-            var res = settingsController.GetApplicationDirectory();
-            if (res)
+            var result = SettingsController.GetPathRRSTrains();// settingsController.GetApplicationDirectory();
+            if (result.Item1)
             {
                 //Если настройки получены проводим инициализацию UI
-                //Получае пути к необходимым папкам игры в кортеж
-                (string, string, string) dirs = settingsController.GetVehecleAndCoupleTypeDirrectores();
-                //Получаем путь к RRS
-                pathRRS = dirs.Item1;
+                //Получаем путь к Составам
+                pathTrains = result.Item2;
                 //Вызываем метод применяющий начальные настройки отображения данных в UI
-                InitialListBox(dirs.Item2, dirs.Item3);
+                InitialListBox();
                 MenuItem_CreateNewConsist.Enabled = true;
                 MenuItem_OpenConsist.Enabled = true;
                 MenuItem_SetFolders.Enabled = false;
             }
             else //Иначе просим пользователя указать каталог с игрой
             {
-                GetOkMessage("Для начала работы приложения, пожалуйста, укажите в меню каталог с установленным RRS");
+                GetOkMessage(result.Item2);
                 MenuItem_CreateNewConsist.Enabled = false;
                 MenuItem_OpenConsist.Enabled = false;
             }
@@ -337,7 +328,7 @@ namespace TrainConsistEdition.UI.WF
         private void SaveSettings()
         {
             //Объявляем контроллер управлениян настройками
-            var settingsController = new ApplicationSettingsController();
+            //var settingsController = new ApplicationSettingsController();
             
             //Открываем диалог выбора каталога
             var folder = new FolderBrowserDialog();
@@ -350,8 +341,8 @@ namespace TrainConsistEdition.UI.WF
                 if (Directory.Exists(path + @"/cfg"))
                 {
                     //Вызываем на контроллере метод устанавливающий директорию игры и передаем внего путь
-                    settingsController.SetApplicationDirectory(path);
-                    //Вызываем локальную функцию получения настроек
+                    SettingsController.SetPathRRS(path);
+                    //Вызываем метод получения настроек
                     LoadSettings();
                 }
                 else
@@ -426,16 +417,6 @@ namespace TrainConsistEdition.UI.WF
             createController.AddConsistOptions(title, descr, coupType, cabine, charginPress, initPress, noAir);
         }
 
-
-        /// <summary>
-        /// Метод убирающий расширение xml из имени сонфигурационного файла
-        /// </summary>
-        /// <param name="item">элемент коллекции имен файлов</param>
-        private string GetListBoxElement(string item)
-        {
-            return item.TrimEnd('.', 'x', 'm', 'l');
-        }
-
         /// <summary>
         /// Метод обрабатывающий CheckBox_TrainOptions
         /// Позволяет скрывать или показывать характеристики состава
@@ -478,34 +459,21 @@ namespace TrainConsistEdition.UI.WF
         /// <summary>
         /// Начальная инициализация UI
         /// </summary>
-        private void InitialListBox(string dirVeh, string dirCouple)
+        private void InitialListBox()
         {
-            //Путь к папке с единицами подвижного состава
-            var vehFolder = new DirectoryInfo(@dirVeh);
-            //Путь к папке с модулями сцепки
-            var coulpFolder = new DirectoryInfo(@dirCouple);
-            //Заполнение ListBox_Loco и ListBox_VagonName данными на основании файлов игры
-            foreach (var item in vehFolder.GetDirectories())
+            var listData = SettingsController.GetListData();
+            foreach (var item in listData.Item1)
             {
-                //Отбираем какой подвижной состав относится к вагонам, а какой к локомотивам
-                //Заполняем ListBox_VagonName
-                if (item.Name.Contains("IMR") || (item.Name.Contains("Fr")))
-                {
-                    listBox_VagonName.Items.Add(GetListBoxElement(item.ToString()));
-                }
-                //Заполняем ListBox_Loco
-                else
-                {
-                    listBox_Loco.Items.Add(GetListBoxElement(item.ToString()));
-                }
-
+                listBox_CouplingType.Items.Add(item);
             }
-            //Заполняем ListBox_CouplingType на основании файлов игры
-            foreach (var item in coulpFolder.GetFiles())
+            foreach (var item in listData.Item2)
             {
-                listBox_CouplingType.Items.Add(GetListBoxElement(item.ToString()));
+                listBox_Loco.Items.Add(item);
             }
-
+            foreach (var item in listData.Item3)
+            {
+                listBox_VagonName.Items.Add(item);
+            }
         }
 
         private void ListBox_Loco_MouseClick(object sender, MouseEventArgs e)

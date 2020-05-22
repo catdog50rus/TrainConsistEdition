@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace TrainConsistEdition.BL.Controllers.Controllers
@@ -18,83 +15,98 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
 
 
         //Методы public
+
+        /// <summary>
+        /// Метод возвращает конфигурационный файл приложения
+        /// </summary>
         public static FileInfo GetConfigFile()
         {
-            
             return new FileInfo("consistEdition.xml"); 
         }
 
+        /// <summary>
+        /// Метод возвращающий путь к папке с составами в игре
+        /// </summary>
         public static (bool, string) GetPathRRSTrains()
         {
-            LoadConfigFile();
-            if (pathRRS.Length > 0) return (true, $@"{pathRRS}{trainsDirectory}");
+            LoadConfigFile(); //Заружаем путь к RRS из конфигурационного файла
+            string dir = $@"{pathRRS}{trainsDirectory}";
+            if (Directory.Exists(dir)) return (true, dir); //Если такая директория существует, возвращаем путь к ней
             else return (false, "Для начала работы приложения, пожалуйста, укажите в меню каталог с установленным RRS");
         }
 
+        /// <summary>
+        /// Метод устанавливает директорию RRS в конфигурационный файл
+        /// </summary>
+        /// <param name="path">Путь</param>
         public static void SetPathRRS(string path)
         {
-            SaveConfigFile(path);
+            SaveConfigFile(path); //Вызываем метод записывающий данные в файл конфигурации
         }
 
-        private static void LoadConfigFile()
-        {
-            var configFile = GetConfigFile();
-            if (configFile.Exists)//Проверяем существует ли конфигурационный файл
-            {
-                try
-                {
-                    //Создаем поток
-                    XmlDocument xReader = new XmlDocument();
-                    //Считываем содержимое XML файла
-                    xReader.Load(configFile.FullName);
-                    // получим корневой элемент
-                    XmlElement xRoot = xReader.DocumentElement;
-                    //Проверяем существует ли путь и ведет ли он к установленной игре
-                    if (xRoot.InnerText != null && Directory.Exists(xRoot.InnerText + @"/cfg"))
-                    {
-                        //Получаем путь к установленнойигре
-                        pathRRS = xRoot.InnerText;
-                        
-                    }
-                   
-                }
-                catch (Exception)
-                {
-                    
-                }
-            }
-
-        }
-
+        /// <summary>
+        /// Метод передает списки с данными установленной RRS
+        /// </summary>
         public static (List<string>, List<string>, List<string>) GetListData()
         {
-           
-            List<string> couplingTypes = new List<string>();
+            //Создаем и заполняем список типов сцепок
+            List<string> couplingTypes = new List<string>(); 
+            //Циклом проходимся по списку файлов в директории
+            //Заполняем список, обрубая расширения файлов
             foreach (var item in new DirectoryInfo($"{pathRRS}{coupleTypeDirectory}").GetFiles())
             {
-                couplingTypes.Add(GetListElement(item.ToString()));
+                couplingTypes.Add(GetListElement(item.Name));
             }
             
-            List<string> loco = new List<string>();
-            List<string> vagons = new List<string>();
-            foreach (var item in GetList($@"{pathRRS}{vehecleDirectory}"))
+            List<string> loco = new List<string>(); //Создаем список локомотивов в игре
+            List<string> vagons = new List<string>(); //Создаем список ваонов в игре
+
+            //Отбираем какой подвижной состав относится к вагонам, а какой к локомотивам
+            foreach (var item in GetList($@"{pathRRS}{vehecleDirectory}")) //Запускаем цикл по директории с подвижным составом игры
             {
-                //Отбираем какой подвижной состав относится к вагонам, а какой к локомотивам
-                //Заполняем Vagons
-                if (item.Contains("IMR") || (item.Contains("Fr")))
+                if (item.Contains("IMR") || (item.Contains("Fr"))) //Заполняем список вагонов
                 {
                     vagons.Add(item);
                 }
-                //Заполняем Loco
-                else
+                else //Заполняем список локомотивов
                 {
                     loco.Add(item);
                 }
             }
-            return (couplingTypes, loco, vagons);
+            return (couplingTypes, loco, vagons); //Возвращаем кортеж списков
         }
 
         //Методы privet
+
+        /// <summary>
+        /// Метод считывающий данные из файла конфигурации
+        /// </summary>
+        private static void LoadConfigFile()
+        {
+            var configFile = GetConfigFile(); //Получаем файл конфигурации
+            if (configFile.Exists)//Проверяем существует ли конфигурационный файл
+            {
+                try
+                {
+                    XmlDocument xReader = new XmlDocument(); //Создаем поток
+
+                    xReader.Load(configFile.FullName); //Считываем содержимое XML файла
+
+                    XmlElement xRoot = xReader.DocumentElement; // получим корневой элемент
+
+                    //Проверяем существует ли путь и ведет ли он к установленной игре
+                    if (Directory.Exists(xRoot.InnerText) && Directory.Exists(xRoot.InnerText + @"/cfg"))
+                    {
+                        pathRRS = xRoot.InnerText; //Получаем путь к установленной игре
+                    }
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+
+        }
 
         /// <summary>
         /// Метод записи конфигурации в XML файл
@@ -103,29 +115,32 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// <param name="pathRRS">Сохраняемый путь к игре</param>
         private static void SaveConfigFile(string pathRRS)
         {
-            // Создаем новый Xml документ.
-            var xWriter = new XmlDocument();
-            // Создаем Xml заголовок.
-            var xmlDeclaration = xWriter.CreateXmlDeclaration("1.0", "UTF-8", null);
-            // Добавляем заголовок перед корневым элементом.
-            xWriter.AppendChild(xmlDeclaration);
-            // Создаем Корневой элемент
-            var root = xWriter.CreateElement("ApplicationDirectory");
-            root.InnerText = pathRRS;
-            // Добавляем новый корневой элемент в документ.
-            xWriter.AppendChild(root);
-            // Сохраняем файл.
-            xWriter.Save(GetConfigFile().FullName);
+            
+            var xWriter = new XmlDocument();// Создаем новый Xml документ.
+            
+            var xmlDeclaration = xWriter.CreateXmlDeclaration("1.0", "UTF-8", null); // Создаем Xml заголовок.
+            
+            xWriter.AppendChild(xmlDeclaration); // Добавляем заголовок перед корневым элементом.
+           
+            var root = xWriter.CreateElement("ApplicationDirectory"); // Создаем Корневой элемент
+            root.InnerText = pathRRS; // Помещаем путь в созданный элемет
+            
+            xWriter.AppendChild(root); // Добавляем новый корневой элемент в документ.
+            
+            xWriter.Save(GetConfigFile().FullName); // Сохраняем файл.
         }
 
+        /// <summary>
+        /// Вспомогательный метод создающий список поддерикторий по нужному пути
+        /// </summary>
         private static List<string> GetList(string path)
         {
             List<string> result = new List<string>();
-            //Путь к папке
-            var folder = new DirectoryInfo(path);
-            foreach (var item in folder.GetDirectories())
+            
+            //Проходим циклом по поддиректориям, заполняя список наименованиями поддиректорий
+            foreach (var item in new DirectoryInfo(path).GetDirectories())
             {
-                result.Add(item.ToString());
+                result.Add(item.Name);
             }
             return result;
 

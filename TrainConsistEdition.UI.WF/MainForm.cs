@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using TrainConsistEdition.BL.Controllers.Controllers;
@@ -420,7 +419,8 @@ namespace TrainConsistEdition.UI.WF
         /// <summary>
         /// Метод обрабатывающий CheckBox_TrainOptions
         /// Позволяет скрывать или показывать характеристики состава
-        /// В общем случае, характеристики состава скрыты, все значения устанавливаются по умолчанию, рекомендованными разработчиками игры
+        /// В общем случае, характеристики состава скрыты, все значения устанавливаются по умолчанию, 
+        /// рекомендованными разработчиками игры
         /// </summary>
         private void CheckBox_TrainOptions_CheckedChanged(object sender, EventArgs e)
         {

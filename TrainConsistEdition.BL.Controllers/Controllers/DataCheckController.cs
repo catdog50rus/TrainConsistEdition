@@ -1,40 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TrainConsistEdition.BL.Models.Trains;
 
 namespace TrainConsistEdition.BL.Controllers.Controllers
 {
+    /// <summary>
+    /// Контроллер проверяет на валидность данные полученные из файла
+    /// В случае валидности метод возвращает true и текстовое сообщение "Ok"
+    /// В случае выявление ошибок типов данных или не соотвествия наименований зарезервированных слов, возвращается false и
+    /// наименование параметра в котором возникла ошибка валидации
+    /// </summary>
     public class DataCheckController
     {
-        private readonly List<string> couplingTypes;
-        private readonly List<string> modulesCfg;
-        private readonly List<string> modules;
+        // Поля. 
+        //Списки возможных значений свойств, определяемые игрой
+        private readonly List<string> couplingTypes; // Список типов сцепок
+        private readonly List<string> modulesCfg; // Списов конфигураций подвижного состава
+        private readonly List<string> modules; //Список модулей подвижного состава
         
+        /// <summary>
+        /// Конструктор.
+        /// Получает данные из установок RRS и заполняет ими списки 
+        /// </summary>
         public DataCheckController()
         {
             
-            var listData = SettingsController.GetListData();
+            var listData = SettingsController.GetListData(); //Получаем списки необходимых данных из установок приложения
 
-            couplingTypes = listData.Item1;
+            couplingTypes = listData.Item1; //Заполняем список типов сцепок
 
-            modules = new List<string>();
-            foreach (var moduleName in listData.Item2)
+            //Список модулей подвижного состава заполняется из списка локомотивов, отбрасывая при необходимости номер локомотива
+            //Один и тот же модуль локомотива соответствует нескольким однотипным локомотивам с разными номерами
+            //Вагоны вне зависимости от модели используют один модуль, его добавляем отдельно
+            modules = new List<string>(); //Создаем список модулей подвижного состава
+            foreach (var moduleName in listData.Item2) // Перебирая модлу локомотивов, заполняем список, отбрасывая номера
             {
+                //TODO в будущем реализовать проверку на задвоенность, при пявлении в игре однотипных локомотивов с разными номерами
                 int pos = moduleName.LastIndexOf('-');
                 if (pos == -1) pos = moduleName.Length;
                 modules.Add(moduleName.Substring(0, pos));
             }
-            modules.Add("passcar");
+            modules.Add("passcar"); //Добавляем модуль вагонов
 
-            modulesCfg = listData.Item2;
-            modulesCfg.AddRange(listData.Item3);
+            modulesCfg = listData.Item2; //Заполняем список конфигураций локомотивами
+            modulesCfg.AddRange(listData.Item3);//Заполняем список конфигураций вагонми
         }
-
-
 
         /// <summary>
         /// Метод прверяющий полученную модель из файла
@@ -42,53 +51,75 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// <param name="model">Модель состава</param>
         public (bool, string) IsValidModel(ConsistModel model)
         {
-            var resultValidCommon = IsValidCommon(model);
-            if (!resultValidCommon.Item1) return (false, resultValidCommon.Item2);
+            //Разделяем данные на 2 потока
+            //Описание свойств всего состава в xml файле соответсвует тегу Common
+            //и Список единиц подвижного состава (локомотивы / вагоны)
 
-            var resiltValidVehcle = IsValidVehcle(model);
-            if (!resiltValidVehcle.Item1) return (false, resiltValidVehcle.Item2);
-            return (true, "Ok!");
+            TrainConsistInfoModel common = model.Common; //Выделяем из общей модели часть относящуюся к описанию свойств
+            var resultValidCommon = IsValidCommon(common); //Проверяем на валидацию только свойства, получаем результат и сообщение
+            if (!resultValidCommon.Item1) return (false, resultValidCommon.Item2);//Если свойства приходят с ошибкой прекращаем валидацию 
+                                                                                  //и возвращаем имя параметра, не прошедшего валидацию
+
+            List<TrainVehicleModel> veheclesList = model.Vehicle; // Выделяем из общей модели список подвижного состава
+            var resiltValidVehcle = IsValidVehcle(veheclesList); //Проверяем на валидацию подвижной состав, получаем результат и текст ошибки
+            if (!resiltValidVehcle.Item1) return (false, resiltValidVehcle.Item2);//Если в какой-то единице подвижного состава возникает ошибка,  
+                                                                                  //прекращаем валидацию и возвращаем имя единицы соста и имя параметра, не прошедшего валидацию
+
+            return (true, "Ok!"); //Если валидация прошла успешно, возвращаем true и Ok!
         }
 
-        private (bool, string) IsValidCommon(ConsistModel model)
+        /// <summary>
+        /// Метод валидиреут свойства поезда
+        /// Наименование состава и описание не валидируем
+        /// </summary>
+        /// <param name="model">модель свойств поезда</param>
+        /// <returns>Возвращает результат валидации и текст ошибки</returns>
+        private (bool, string) IsValidCommon(TrainConsistInfoModel model)
         {
-            bool result;
+            bool result; //Объявляем переменную типа bool
 
-            result = model.Common.CabineInVehicle == 0 || model.Common.CabineInVehicle == 0 ? true : false;
+            result = model.CabineInVehicle == 0 || model.CabineInVehicle == 1 ? true : false; //Проверяем значение свойства по возможным значениям
             if (!result) return (false, "CabineInVehicle False");
 
-            result = model.Common.ChargingPressure >= 0 || model.Common.ChargingPressure <= 5.0 ? true : false;
+            result = model.ChargingPressure >= 0 && model.ChargingPressure <= 5.0 ? true : false; //Проверяем значение по вилке возможных значений
             if (!result) return (false, "ChargingPressure False");
 
-            result = couplingTypes.Contains(model.Common.CouplingModule) ? true : false;
+            result = couplingTypes.Contains(model.CouplingModule) ? true : false; //Проверяем значение свойства по списку возможных значений
             if (!result) return (false, "CouplingModulee False");
 
 
-            result = model.Common.InitMainResPressure >= 0 || model.Common.InitMainResPressure <= 5.0 ? true : false;
+            result = model.InitMainResPressure >= 0 && model.InitMainResPressure <= 5.0 ? true : false; //Проверяем значение по вилке возможных значений
             if (!result) return (false, "InitMainResPressure False");
 
-            result = model.Common.NoAir == 0 || model.Common.NoAir == 1 ? true : false;
+            result = model.NoAir == 0 || model.NoAir == 1 ? true : false; //Проверяем значение свойства по возможным значениям
             if (!result) return (false, "NoAir False");
+            
             return (true, "Ok");
 
         }
-        private (bool, string) IsValidVehcle(ConsistModel model)
+
+        /// <summary>
+        /// Метод валидирует список подвижного состава из поезда
+        /// </summary>
+        /// <param name="modelsList">Спиок подвижного состава</param>
+        /// <returns>Возвращает результат валидации и текст ошибки</returns>
+        private (bool, string) IsValidVehcle(List<TrainVehicleModel> modelsList)
         {
-            bool result;
-            List<TrainVehicleModel> modelsList = model.Vehicle;
-            foreach (var item in modelsList)
+            bool result; //Объявляем переменную типа bool
+
+            foreach (var item in modelsList) //Запускаем перебор всех единиц подвижного состава из списка
             {
-                result = item.Count > 0 ? true : false;
+                result = item.Count > 0 ? true : false; // Проверяем, чтобы количество было боольше 0
                 if (!result) return (false, $"{item.ModuleConfig} Count False");
 
-                result = item.PayloadCoeff >= 0 || item.PayloadCoeff <= 1.0 ? true : false;
+                result = item.PayloadCoeff >= 0 && item.PayloadCoeff <= 1.0 ? true : false; // Проверяем значение свойста по вилке возможных значений
                 if (!result) return (false, $"{item.ModuleConfig} PayloadCoeff False");
 
-                result = modulesCfg.Contains(item.ModuleConfig) ? true : false;
+                result = modulesCfg.Contains(item.ModuleConfig) ? true : false; //Проверяем значение свойства по списку возможных значений
                 if (!result) return (false, $"{item.ModuleConfig} ModuleConfig False");
 
 
-                result = modules.Contains(item.Module) || item.Module == "passcar" ? true : false;
+                result = modules.Contains(item.Module) || item.Module == "passcar" ? true : false; //Проверяем значение свойства по списку возможных значений
                 if (!result) return (false, $"{item.Module} Module False");
 
             };

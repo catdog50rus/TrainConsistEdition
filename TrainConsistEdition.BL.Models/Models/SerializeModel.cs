@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using TrainConsistEdition.BL.Models.Trains;
 
 namespace TrainConsistEdition.BL.Models.Models
 {
@@ -37,20 +31,12 @@ namespace TrainConsistEdition.BL.Models.Models
             //Основные настройки
             Settings = new XmlWriterSettings
             {
-                //Кодировка
-                Encoding = Encoding.UTF8,
-                //Устанавливаем формат документа
-                ConformanceLevel = ConformanceLevel.Document,
-                //Опускаем объявление заголовка
-                OmitXmlDeclaration = false,
-                //Задаем использование отступов
-                Indent = true,
-                //Устанавлиаем отступ 4 пробела
-                IndentChars = "    "
+                Encoding = Encoding.UTF8, //Кодировка
+                ConformanceLevel = ConformanceLevel.Document, //Устанавливаем формат документа
+                OmitXmlDeclaration = false, //Опускаем объявление заголовка
+                Indent = true, //Задаем использование отступов
+                IndentChars = "    " //Устанавлиаем отступ 4 пробела
             };
         }
-
-
-        
     }
 }

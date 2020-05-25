@@ -29,7 +29,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// </summary>
         public static (bool, string) GetPathRRSTrains()
         {
-            LoadConfigFile(); //Заружаем путь к RRS из конфигурационного файла
+            LoadConfigFile(); //Загружаем путь к RRS из конфигурационного файла
             string dir = $@"{pathRRS}{trainsDirectory}";
             if (Directory.Exists(dir)) return (true, dir); //Если такая директория существует, возвращаем путь к ней
             else return (false, "Для начала работы приложения, пожалуйста, укажите в меню каталог с установленным RRS");
@@ -59,7 +59,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
             }
             
             List<string> loco = new List<string>(); //Создаем список локомотивов в игре
-            List<string> vagons = new List<string>(); //Создаем список ваонов в игре
+            List<string> vagons = new List<string>(); //Создаем список вагонов в игре
 
             //Отбираем какой подвижной состав относится к вагонам, а какой к локомотивам
             foreach (var item in GetList($@"{pathRRS}{vehecleDirectory}")) //Запускаем цикл по директории с подвижным составом игры
@@ -123,7 +123,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
             xWriter.AppendChild(xmlDeclaration); // Добавляем заголовок перед корневым элементом.
            
             var root = xWriter.CreateElement("ApplicationDirectory"); // Создаем Корневой элемент
-            root.InnerText = pathRRS; // Помещаем путь в созданный элемет
+            root.InnerText = pathRRS; // Помещаем путь в созданный элемент
             
             xWriter.AppendChild(root); // Добавляем новый корневой элемент в документ.
             
@@ -131,7 +131,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         }
 
         /// <summary>
-        /// Вспомогательный метод создающий список поддерикторий по нужному пути
+        /// Вспомогательный метод создающий список поддиректорий по нужному пути
         /// </summary>
         private static List<string> GetList(string path)
         {

@@ -18,7 +18,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         private readonly string filename;
 
         /// <summary>
-        /// Объявление модели конечного состава пезда
+        /// Объявление модели конечного состава поезда
         /// </summary>
         private readonly ConsistModel consistModel;
 
@@ -28,7 +28,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         private readonly SerializeModel serializeModel;
 
         /// <summary>
-        /// Конструктор принимает 2 параметра и нициализирует модели
+        /// Конструктор принимает 2 параметра и инициализирует модели
         /// </summary>
         /// <param name="controller">Контроллер создания подвижного состава</param>
         /// <param name="fileName">Имя XML файла, выбранное пользователем</param>
@@ -36,13 +36,13 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         {
             this.consistModel = controller.GetConsistModel();//Получаем итоговую модель поезда из контроллера
             
-            this.filename = filename;//Получае имя XML файла
+            this.filename = filename;//Получаем имя XML файла
             
             this.serializeModel = new SerializeModel();//Инициализируем модель настроек сериализации
         }
 
         /// <summary>
-        /// Конструктор принимает полный путь к файу
+        /// Конструктор принимает полный путь к файлу
         /// </summary>
         /// <param name="filename">путь к файлу</param>
         public SerializeController(string filename)
@@ -53,10 +53,10 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
 
 
         /// <summary>
-        /// Метод сериализирует выбранную модель состава в XML файл
+        /// Метод сериализует выбранную модель состава в XML файл
         /// </summary>
         /// <param name="path">Путь к папке с составами</param>
-        /// <returns>Возвращает результат сериалазации true или false</returns>
+        /// <returns>Возвращает результат сериализации true или false</returns>
         public (bool,string) SerializeConsist()
         {
             FileStream fs = null;
@@ -118,10 +118,10 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
                 }
                 
             }
-            catch (Exception) //В случае ошибки десериализации возвращаем кортеж данных и текст ошибки, выводимы пользователю
+            catch (Exception) //В случае ошибки десериализации возвращаем кортеж данных и текст ошибки, выводим пользователю
             {
                 
-                return (consistModel, false, "Не удалось преобразовать файл!\r\nУбедитесь, что открываемый файл соответствует файлу состава или данные в нем несоответствуют типу.");
+                return (consistModel, false, "Не удалось преобразовать файл!\r\nУбедитесь, что открываемый файл соответствует файлу состава или данные в нем не соответствуют типу.");
             }
             finally //Закрываем файл, если он открыт 
             {

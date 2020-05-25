@@ -13,6 +13,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
     /// </summary>
     public class CreateConsistController
     {
+        //Поля
         /// <summary>
         /// Объявляем модель свойств и характеристик состава
         /// </summary>
@@ -24,10 +25,11 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         private readonly List<TrainVehicleModel> listVehicles;
 
         /// <summary>
-        /// Объявляем модель итогового состава. Эти данные будут сериализированы в итоговый XML файл
+        /// Объявляем модель итогового состава. Эти данные будут сериализованы в итоговый XML файл
         /// </summary>
         public ConsistModel ConsistModel { get; set; }
 
+        //Конструкторы
         /// <summary>
         /// Конструктор инициализирует объявленные модели
         /// </summary>
@@ -38,6 +40,10 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
             ConsistModel = new ConsistModel();
         }
         
+        /// <summary>
+        /// Конструктор принимает модель состава и разделяют данные по моделям описание состава и список единиц подвижного состава
+        /// </summary>
+        /// <param name="model"></param>
         public CreateConsistController(ConsistModel model)
         {
             consistInfoModel = model.Common;
@@ -115,7 +121,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
             }
             catch (Exception)
             {
-                return (false, "Не удалось отредоктировать состав!");
+                return (false, "Не удалось отредактировать состав!");
             }
             
         }
@@ -136,7 +142,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
             }
             else
             {
-                return (false, "Не удалось отредоктировать состав!");
+                return (false, "Не удалось отредактировать состав!");
             }
         }
 
@@ -155,7 +161,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
             }
             else
             {
-                return (false, "Не удалось отредоктировать состав!");
+                return (false, "Не удалось отредактировать состав!");
             }
         }
 

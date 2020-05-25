@@ -35,7 +35,7 @@ namespace TrainConsistEdition.BL.Models.Models
                 ConformanceLevel = ConformanceLevel.Document, //Устанавливаем формат документа
                 OmitXmlDeclaration = false, //Опускаем объявление заголовка
                 Indent = true, //Задаем использование отступов
-                IndentChars = "    " //Устанавлиаем отступ 4 пробела
+                IndentChars = "    " //Устанавливаем отступ 4 пробела
             };
         }
     }

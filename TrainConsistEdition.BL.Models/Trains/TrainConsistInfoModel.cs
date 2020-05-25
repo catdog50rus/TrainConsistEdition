@@ -10,7 +10,7 @@ namespace TrainConsistEdition.BL.Models.Trains
 {
     
     /// <summary>
-    /// класс модели общего описания и технических харктеристик поезда
+    /// класс модели общего описания и технических характеристик поезда
     /// </summary>
     [Serializable]
     public class TrainConsistInfoModel
@@ -31,7 +31,7 @@ namespace TrainConsistEdition.BL.Models.Trains
         public double ChargingPressure { get; set; }
 
         /// <summary>
-        /// Начальное давление в главном рзервуаре
+        /// Начальное давление в главном резервуаре
         /// </summary>
         public double InitMainResPressure { get; set; }
 
@@ -46,7 +46,7 @@ namespace TrainConsistEdition.BL.Models.Trains
         public string Title { get; set; }
         
         /// <summary>
-        /// Описание поезда, отображется в игровом клиенте
+        /// Описание поезда, отображается в игровом клиенте
         /// </summary>
         public string Description { get; set; } 
 

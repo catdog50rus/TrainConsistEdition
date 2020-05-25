@@ -522,7 +522,7 @@
             this.label_CouplingModule.Name = "label_CouplingModule";
             this.label_CouplingModule.Size = new System.Drawing.Size(465, 39);
             this.label_CouplingModule.TabIndex = 4;
-            this.label_CouplingModule.Text = "Тип поглощающего аппарата сцепного устроства (по умолчанию ef-coupling)";
+            this.label_CouplingModule.Text = "Тип поглощающего аппарата сцепного устройства (по умолчанию ef-coupling)";
             // 
             // label_NoAir
             // 
@@ -677,7 +677,7 @@
             this.MinimumSize = new System.Drawing.Size(1000, 700);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Редоктор составов RRS";
+            this.Text = "Редактор составов RRS";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.panel_Main.ResumeLayout(false);
             this.panel_Main.PerformLayout();

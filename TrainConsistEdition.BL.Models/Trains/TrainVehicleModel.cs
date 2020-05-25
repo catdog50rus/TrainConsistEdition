@@ -18,7 +18,7 @@ namespace TrainConsistEdition.BL.Models.Trains
         public string Module { get; set; }
 
         /// <summary>
-        /// Конфигурционный файл вагона/локомотива
+        /// Конфигурационный файл вагона/локомотива
         /// </summary>
         public string ModuleConfig { get; set; }
 

@@ -16,13 +16,13 @@
         "Entry"
         {
         "MsmKey" = "8:_0B34F3594181E3AB37801B7D58B7E202"
-        "OwnerKey" = "8:_726446FE5EB549B785B03B30EFBA3873"
+        "OwnerKey" = "8:_0EC5E0DC823B457A86E7E88A7FECF562"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_0B34F3594181E3AB37801B7D58B7E202"
-        "OwnerKey" = "8:_0EC5E0DC823B457A86E7E88A7FECF562"
+        "OwnerKey" = "8:_726446FE5EB549B785B03B30EFBA3873"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -63,6 +63,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C27031CEF4994FCE93F8DB08A7914D43"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C4A03047BBAB2C9F7D6FC33656E8F626"
         "OwnerKey" = "8:_DBE8C9356EBC3DA92E78A528608BF49D"
         "MsmSig" = "8:_UNDEFINED"
@@ -94,7 +100,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0B34F3594181E3AB37801B7D58B7E202"
+        "OwnerKey" = "8:_726446FE5EB549B785B03B30EFBA3873"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_557D6702039D45E796704E39769DB179"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_0EC5E0DC823B457A86E7E88A7FECF562"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -112,19 +130,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0EC5E0DC823B457A86E7E88A7FECF562"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_557D6702039D45E796704E39769DB179"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_726446FE5EB549B785B03B30EFBA3873"
+        "OwnerKey" = "8:_0B34F3594181E3AB37801B7D58B7E202"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -277,6 +283,26 @@
             {
             "SourcePath" = "8:..\\..\\..\\..\\Downloads\\trainconsist.ico"
             "TargetName" = "8:trainconsist.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_2164E575F0514282842DDBB90F35A595"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C27031CEF4994FCE93F8DB08A7914D43"
+            {
+            "SourcePath" = "8:..\\TrainConsistEdition.UI.WF\\Описание.docx"
+            "TargetName" = "8:Описание.docx"
             "Tag" = "8:"
             "Folder" = "8:_2164E575F0514282842DDBB90F35A595"
             "Condition" = "8:"
@@ -1020,7 +1046,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_557D6702039D45E796704E39769DB179"
             {
-            "SourcePath" = "8:..\\TrainConsistEdition.BL.Models\\obj\\Release\\TrainConsistEdition.BL.Models.dll"
+            "SourcePath" = "8:..\\TrainConsistEdition.BL.Models\\obj\\Debug\\TrainConsistEdition.BL.Models.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_2164E575F0514282842DDBB90F35A595"

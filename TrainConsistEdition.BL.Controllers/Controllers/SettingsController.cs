@@ -8,9 +8,9 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
     public static class SettingsController
     {
         //Поля
-        private static readonly string vehecleDirectory = @"\cfg\vehicles";
-        private static readonly string coupleTypeDirectory = @"\cfg\couplings";
-        private static readonly string trainsDirectory = @"\cfg\trains\";
+        private const string _vehecleDirectory = @"\cfg\vehicles";
+        private const string _coupleTypeDirectory = @"\cfg\couplings";
+        private const string _trainsDirectory = @"\cfg\trains\";
         private static string pathRRS = "";
 
 
@@ -19,9 +19,9 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// <summary>
         /// Метод возвращает конфигурационный файл приложения
         /// </summary>
-        public static FileInfo GetConfigFile()
+        private static FileInfo GetConfigFile()
         {
-            return new FileInfo("consistEdition.xml"); 
+            return new FileInfo("consistEdition.xml");
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         public static (bool, string) GetPathRRSTrains()
         {
             LoadConfigFile(); //Загружаем путь к RRS из конфигурационного файла
-            string dir = $@"{pathRRS}{trainsDirectory}";
+            string dir = $@"{pathRRS}{_trainsDirectory}";
             if (Directory.Exists(dir)) return (true, dir); //Если такая директория существует, возвращаем путь к ней
             else return (false, "Для начала работы приложения, пожалуйста, укажите в меню каталог с установленным RRS");
         }
@@ -50,10 +50,11 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         public static (List<string>, List<string>, List<string>) GetListData()
         {
             //Создаем и заполняем список типов сцепок
-            List<string> couplingTypes = new List<string>(); 
+            List<string> couplingTypes = new List<string>();
+
             //Циклом проходимся по списку файлов в директории
             //Заполняем список, обрубая расширения файлов
-            foreach (var item in new DirectoryInfo($"{pathRRS}{coupleTypeDirectory}").GetFiles())
+            foreach (var item in new DirectoryInfo($"{pathRRS}{_coupleTypeDirectory}").GetFiles())
             {
                 couplingTypes.Add(GetListElement(item.Name));
             }
@@ -62,7 +63,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
             List<string> vagons = new List<string>(); //Создаем список вагонов в игре
 
             //Отбираем какой подвижной состав относится к вагонам, а какой к локомотивам
-            foreach (var item in GetList($@"{pathRRS}{vehecleDirectory}")) //Запускаем цикл по директории с подвижным составом игры
+            foreach (var item in GetList($@"{pathRRS}{_vehecleDirectory}")) //Запускаем цикл по директории с подвижным составом игры
             {
                 if (item.Contains("IMR") || (item.Contains("Fr"))) //Заполняем список вагонов
                 {
@@ -83,11 +84,13 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
         /// </summary>
         private static void LoadConfigFile()
         {
+
             var configFile = GetConfigFile(); //Получаем файл конфигурации
             if (configFile.Exists)//Проверяем существует ли конфигурационный файл
             {
                 try
                 {
+
                     XmlDocument xReader = new XmlDocument(); //Создаем поток
 
                     xReader.Load(configFile.FullName); //Считываем содержимое XML файла
@@ -102,7 +105,7 @@ namespace TrainConsistEdition.BL.Controllers.Controllers
                 }
                 catch (Exception)
                 {
-
+                    _ = $"Ошибка чтения файла конфигурации";
                 }
             }
 

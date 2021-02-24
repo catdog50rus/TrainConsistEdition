@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "kn9rp49ktw7KrQhKBKrmzfmmXBwWsrbYX3aSfqRVj6HDM1jfUozHRSe/iIPynBtyM83k9LFXYNHANmPxtIBumg==",
+  "success": true,
+  "projectFilePath": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI.Settings\\RRSTrainConsistEdition.Infrastructure.DI.Settings.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fokin\\.nuget\\packages\\microsoft.netcore.platforms\\1.0.1\\microsoft.netcore.platforms.1.0.1.nupkg.sha512",
+    "C:\\Users\\fokin\\.nuget\\packages\\microsoft.netcore.targets\\1.0.1\\microsoft.netcore.targets.1.0.1.nupkg.sha512",
+    "C:\\Users\\fokin\\.nuget\\packages\\simpleinjector\\5.2.1\\simpleinjector.5.2.1.nupkg.sha512",
+    "C:\\Users\\fokin\\.nuget\\packages\\system.componentmodel\\4.0.1\\system.componentmodel.4.0.1.nupkg.sha512",
+    "C:\\Users\\fokin\\.nuget\\packages\\system.runtime\\4.1.0\\system.runtime.4.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

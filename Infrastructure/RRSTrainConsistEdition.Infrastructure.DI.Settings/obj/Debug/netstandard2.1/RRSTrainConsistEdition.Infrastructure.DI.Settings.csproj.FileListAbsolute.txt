@@ -1,0 +1,16 @@
+D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI.Settings\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.Settings.deps.json
+D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI.Settings\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.Settings.dll
+D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI.Settings\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.Settings.pdb
+D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI.Settings\bin\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.dll
+D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI.Settings\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.dll
+D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI.Settings\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.dll
+D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI.Settings\bin\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.pdb
+D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI.Settings\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.pdb
+D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI.Settings\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.pdb
+D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI.Settings\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.Settings.csprojAssemblyReference.cache
+D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI.Settings\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.Settings.AssemblyInfoInputs.cache
+D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI.Settings\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.Settings.AssemblyInfo.cs
+D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI.Settings\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.Settings.csproj.CoreCompileInputs.cache
+D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI.Settings\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.Settings.csproj.CopyComplete
+D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI.Settings\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.Settings.dll
+D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI.Settings\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.Settings.pdb

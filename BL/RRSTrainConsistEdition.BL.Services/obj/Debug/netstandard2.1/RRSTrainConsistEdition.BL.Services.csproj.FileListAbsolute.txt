@@ -1,0 +1,14 @@
+D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\bin\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.deps.json
+D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\bin\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.dll
+D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\bin\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.pdb
+D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.dll
+D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.dll
+D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.pdb
+D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.pdb
+D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\obj\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.csprojAssemblyReference.cache
+D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\obj\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.AssemblyInfoInputs.cache
+D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\obj\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.AssemblyInfo.cs
+D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\obj\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.csproj.CoreCompileInputs.cache
+D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\obj\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.csproj.CopyComplete
+D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\obj\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.dll
+D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\obj\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.pdb

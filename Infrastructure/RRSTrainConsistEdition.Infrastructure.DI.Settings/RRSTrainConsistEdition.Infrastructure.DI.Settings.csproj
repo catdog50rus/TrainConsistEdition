@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SimpleInjector" Version="5.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BL\RRSTrainConsistEdition.BL.Services\RRSTrainConsistEdition.BL.Services.csproj" />
+    <ProjectReference Include="..\..\Core\RRSTrainConsistEdition.Core.Models\RRSTrainConsistEdition.Core.Models.csproj" />
+    <ProjectReference Include="..\RRSTrainConsistEdition.Infrastructure.DI\RRSTrainConsistEdition.Infrastructure.DI.csproj" />
+  </ItemGroup>
+
+</Project>

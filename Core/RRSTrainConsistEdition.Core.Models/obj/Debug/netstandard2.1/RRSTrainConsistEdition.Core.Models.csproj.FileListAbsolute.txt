@@ -1,0 +1,8 @@
+D:\Development\C#Repository\RRSTrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.deps.json
+D:\Development\C#Repository\RRSTrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.dll
+D:\Development\C#Repository\RRSTrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.pdb
+D:\Development\C#Repository\RRSTrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.AssemblyInfoInputs.cache
+D:\Development\C#Repository\RRSTrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.AssemblyInfo.cs
+D:\Development\C#Repository\RRSTrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.csproj.CoreCompileInputs.cache
+D:\Development\C#Repository\RRSTrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.dll
+D:\Development\C#Repository\RRSTrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.pdb

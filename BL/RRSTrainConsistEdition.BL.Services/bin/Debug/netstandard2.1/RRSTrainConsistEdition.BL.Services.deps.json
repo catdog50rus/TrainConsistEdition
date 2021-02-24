@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.1/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.1": {},
+    ".NETStandard,Version=v2.1/": {
+      "RRSTrainConsistEdition.BL.Services/1.0.0": {
+        "dependencies": {
+          "RRSTrainConsistEdition.Infrastructure.DI": "1.0.0"
+        },
+        "runtime": {
+          "RRSTrainConsistEdition.BL.Services.dll": {}
+        }
+      },
+      "RRSTrainConsistEdition.Core.Models/1.0.0": {
+        "runtime": {
+          "RRSTrainConsistEdition.Core.Models.dll": {}
+        }
+      },
+      "RRSTrainConsistEdition.Infrastructure.DI/1.0.0": {
+        "dependencies": {
+          "RRSTrainConsistEdition.Core.Models": "1.0.0"
+        },
+        "runtime": {
+          "RRSTrainConsistEdition.Infrastructure.DI.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RRSTrainConsistEdition.BL.Services/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RRSTrainConsistEdition.Core.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RRSTrainConsistEdition.Infrastructure.DI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETStandard,Version=v2.1": {
+      "RRSTrainConsistEdition.Core.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "compile": {
+          "bin/placeholder/RRSTrainConsistEdition.Core.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RRSTrainConsistEdition.Core.Models.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RRSTrainConsistEdition.Core.Models/1.0.0": {
+      "type": "project",
+      "path": "../../Core/RRSTrainConsistEdition.Core.Models/RRSTrainConsistEdition.Core.Models.csproj",
+      "msbuildProject": "../../Core/RRSTrainConsistEdition.Core.Models/RRSTrainConsistEdition.Core.Models.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETStandard,Version=v2.1": [
+      "RRSTrainConsistEdition.Core.Models >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\fokin\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI\\RRSTrainConsistEdition.Infrastructure.DI.csproj",
+      "projectName": "RRSTrainConsistEdition.Infrastructure.DI",
+      "projectPath": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI\\RRSTrainConsistEdition.Infrastructure.DI.csproj",
+      "packagesPath": "C:\\Users\\fokin\\.nuget\\packages\\",
+      "outputPath": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\fokin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netstandard2.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "projectReferences": {
+            "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Core\\RRSTrainConsistEdition.Core.Models\\RRSTrainConsistEdition.Core.Models.csproj": {
+              "projectPath": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Core\\RRSTrainConsistEdition.Core.Models\\RRSTrainConsistEdition.Core.Models.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netstandard2.1": {
+        "targetAlias": "netstandard2.1",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "NETStandard.Library": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

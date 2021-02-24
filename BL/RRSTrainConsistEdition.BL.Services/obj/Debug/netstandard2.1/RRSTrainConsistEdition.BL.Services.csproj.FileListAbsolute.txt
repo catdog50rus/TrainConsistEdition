@@ -12,3 +12,17 @@ D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.
 D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\obj\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.csproj.CopyComplete
 D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\obj\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.dll
 D:\Development\C#Repository\RRSTrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\obj\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.pdb
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\bin\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.deps.json
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\bin\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.dll
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\bin\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.pdb
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.dll
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.dll
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.pdb
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.pdb
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\obj\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.csprojAssemblyReference.cache
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\obj\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.AssemblyInfoInputs.cache
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\obj\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.AssemblyInfo.cs
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\obj\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.csproj.CoreCompileInputs.cache
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\obj\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.csproj.CopyComplete
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\obj\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.dll
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\BL\RRSTrainConsistEdition.BL.Services\obj\Debug\netstandard2.1\RRSTrainConsistEdition.BL.Services.pdb

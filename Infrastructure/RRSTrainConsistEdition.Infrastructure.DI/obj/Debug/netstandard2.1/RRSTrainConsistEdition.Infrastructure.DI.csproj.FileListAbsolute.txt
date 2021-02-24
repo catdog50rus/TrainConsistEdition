@@ -10,3 +10,15 @@ D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsis
 D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.csproj.CopyComplete
 D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.dll
 D:\Development\C#Repository\RRSTrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.pdb
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.deps.json
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.dll
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.pdb
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.dll
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.pdb
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.csprojAssemblyReference.cache
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.AssemblyInfoInputs.cache
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.AssemblyInfo.cs
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.csproj.CoreCompileInputs.cache
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.csproj.CopyComplete
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.dll
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Infrastructure\RRSTrainConsistEdition.Infrastructure.DI\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Infrastructure.DI.pdb

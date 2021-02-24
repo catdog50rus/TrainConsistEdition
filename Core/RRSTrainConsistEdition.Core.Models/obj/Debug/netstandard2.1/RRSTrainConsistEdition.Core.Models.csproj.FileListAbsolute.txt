@@ -6,3 +6,11 @@ D:\Development\C#Repository\RRSTrainConsistEdition\Core\RRSTrainConsistEdition.C
 D:\Development\C#Repository\RRSTrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.csproj.CoreCompileInputs.cache
 D:\Development\C#Repository\RRSTrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.dll
 D:\Development\C#Repository\RRSTrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.pdb
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.deps.json
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.dll
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\bin\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.pdb
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.AssemblyInfoInputs.cache
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.AssemblyInfo.cs
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.csproj.CoreCompileInputs.cache
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.dll
+D:\Divelopment\C#Repository\catdog50rus\TrainConsistEdition\Core\RRSTrainConsistEdition.Core.Models\obj\Debug\netstandard2.1\RRSTrainConsistEdition.Core.Models.pdb

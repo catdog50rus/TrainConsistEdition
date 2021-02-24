@@ -346,11 +346,11 @@
   "project": {
     "version": "1.2.0",
     "restore": {
-      "projectUniqueName": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\UI\\RRSTrainConsistEdition.UI.WinForms\\RRSTrainConsistEdition.UI.WinForms.csproj",
+      "projectUniqueName": "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\UI\\RRSTrainConsistEdition.UI.WinForms\\RRSTrainConsistEdition.UI.WinForms.csproj",
       "projectName": "RRSTrainConsistEdition.UI.WinForms",
-      "projectPath": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\UI\\RRSTrainConsistEdition.UI.WinForms\\RRSTrainConsistEdition.UI.WinForms.csproj",
+      "projectPath": "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\UI\\RRSTrainConsistEdition.UI.WinForms\\RRSTrainConsistEdition.UI.WinForms.csproj",
       "packagesPath": "C:\\Users\\fokin\\.nuget\\packages\\",
-      "outputPath": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\UI\\RRSTrainConsistEdition.UI.WinForms\\obj\\",
+      "outputPath": "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\UI\\RRSTrainConsistEdition.UI.WinForms\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\fokin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -367,8 +367,8 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI.Settings\\RRSTrainConsistEdition.Infrastructure.DI.Settings.csproj": {
-              "projectPath": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI.Settings\\RRSTrainConsistEdition.Infrastructure.DI.Settings.csproj"
+            "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI.Settings\\RRSTrainConsistEdition.Infrastructure.DI.Settings.csproj": {
+              "projectPath": "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI.Settings\\RRSTrainConsistEdition.Infrastructure.DI.Settings.csproj"
             }
           }
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kn9rp49ktw7KrQhKBKrmzfmmXBwWsrbYX3aSfqRVj6HDM1jfUozHRSe/iIPynBtyM83k9LFXYNHANmPxtIBumg==",
+  "dgSpecHash": "wlNH7uNsIThlU6ldR1wu8LeQCE0iphMO+Lq/0vb7RxVsdy1lQxfrQHOUyTRBUp46zPLJ0JOGdFVXi4PeKID4Wg==",
   "success": true,
-  "projectFilePath": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI.Settings\\RRSTrainConsistEdition.Infrastructure.DI.Settings.csproj",
+  "projectFilePath": "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI.Settings\\RRSTrainConsistEdition.Infrastructure.DI.Settings.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fokin\\.nuget\\packages\\microsoft.netcore.platforms\\1.0.1\\microsoft.netcore.platforms.1.0.1.nupkg.sha512",
     "C:\\Users\\fokin\\.nuget\\packages\\microsoft.netcore.targets\\1.0.1\\microsoft.netcore.targets.1.0.1.nupkg.sha512",

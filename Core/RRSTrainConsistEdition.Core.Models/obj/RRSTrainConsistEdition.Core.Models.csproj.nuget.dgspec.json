@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Core\\RRSTrainConsistEdition.Core.Models\\RRSTrainConsistEdition.Core.Models.csproj": {}
+    "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\Core\\RRSTrainConsistEdition.Core.Models\\RRSTrainConsistEdition.Core.Models.csproj": {}
   },
   "projects": {
-    "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Core\\RRSTrainConsistEdition.Core.Models\\RRSTrainConsistEdition.Core.Models.csproj": {
+    "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\Core\\RRSTrainConsistEdition.Core.Models\\RRSTrainConsistEdition.Core.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Core\\RRSTrainConsistEdition.Core.Models\\RRSTrainConsistEdition.Core.Models.csproj",
+        "projectUniqueName": "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\Core\\RRSTrainConsistEdition.Core.Models\\RRSTrainConsistEdition.Core.Models.csproj",
         "projectName": "RRSTrainConsistEdition.Core.Models",
-        "projectPath": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Core\\RRSTrainConsistEdition.Core.Models\\RRSTrainConsistEdition.Core.Models.csproj",
+        "projectPath": "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\Core\\RRSTrainConsistEdition.Core.Models\\RRSTrainConsistEdition.Core.Models.csproj",
         "packagesPath": "C:\\Users\\fokin\\.nuget\\packages\\",
-        "outputPath": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Core\\RRSTrainConsistEdition.Core.Models\\obj\\",
+        "outputPath": "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\Core\\RRSTrainConsistEdition.Core.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\fokin\\AppData\\Roaming\\NuGet\\NuGet.Config",

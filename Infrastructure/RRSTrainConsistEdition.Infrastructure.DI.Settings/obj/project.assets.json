@@ -328,11 +328,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI.Settings\\RRSTrainConsistEdition.Infrastructure.DI.Settings.csproj",
+      "projectUniqueName": "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI.Settings\\RRSTrainConsistEdition.Infrastructure.DI.Settings.csproj",
       "projectName": "RRSTrainConsistEdition.Infrastructure.DI.Settings",
-      "projectPath": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI.Settings\\RRSTrainConsistEdition.Infrastructure.DI.Settings.csproj",
+      "projectPath": "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI.Settings\\RRSTrainConsistEdition.Infrastructure.DI.Settings.csproj",
       "packagesPath": "C:\\Users\\fokin\\.nuget\\packages\\",
-      "outputPath": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI.Settings\\obj\\",
+      "outputPath": "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI.Settings\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\fokin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -349,14 +349,14 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "projectReferences": {
-            "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\BL\\RRSTrainConsistEdition.BL.Services\\RRSTrainConsistEdition.BL.Services.csproj": {
-              "projectPath": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\BL\\RRSTrainConsistEdition.BL.Services\\RRSTrainConsistEdition.BL.Services.csproj"
+            "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\BL\\RRSTrainConsistEdition.BL.Services\\RRSTrainConsistEdition.BL.Services.csproj": {
+              "projectPath": "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\BL\\RRSTrainConsistEdition.BL.Services\\RRSTrainConsistEdition.BL.Services.csproj"
             },
-            "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Core\\RRSTrainConsistEdition.Core.Models\\RRSTrainConsistEdition.Core.Models.csproj": {
-              "projectPath": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Core\\RRSTrainConsistEdition.Core.Models\\RRSTrainConsistEdition.Core.Models.csproj"
+            "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\Core\\RRSTrainConsistEdition.Core.Models\\RRSTrainConsistEdition.Core.Models.csproj": {
+              "projectPath": "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\Core\\RRSTrainConsistEdition.Core.Models\\RRSTrainConsistEdition.Core.Models.csproj"
             },
-            "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI\\RRSTrainConsistEdition.Infrastructure.DI.csproj": {
-              "projectPath": "D:\\Development\\C#Repository\\RRSTrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI\\RRSTrainConsistEdition.Infrastructure.DI.csproj"
+            "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI\\RRSTrainConsistEdition.Infrastructure.DI.csproj": {
+              "projectPath": "D:\\Divelopment\\C#Repository\\catdog50rus\\TrainConsistEdition\\Infrastructure\\RRSTrainConsistEdition.Infrastructure.DI\\RRSTrainConsistEdition.Infrastructure.DI.csproj"
             }
           }
         }
